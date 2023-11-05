@@ -22,8 +22,8 @@ class Habitacion(models.Model):
 # Creamos una tabla con las reservas de los clientes y las habitaciones que han reservado
 
 class Reserva(models.Model):
-    cliente = models.ForeignKey(Cliente,on_delete=models.CASCADE)
-    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente,on_delete=models.CASCADE,related_name='cliente_reserva')
+    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE,related_name='habitacion_reserva')
     fecha_entrada = models.DateTimeField(default=timezone.now)
     fecha_salida = models.DateTimeField(default=timezone.now)
     
@@ -31,7 +31,7 @@ class Reserva(models.Model):
 # por lo que la Estancia es lo que realmente si ha estado o no el cliente en el hotel y el tiempo real.
     
 class Estancia(models.Model):
-    reserva = models.OneToOneField(Reserva, on_delete=models.CASCADE)
+    reserva = models.OneToOneField(Reserva, on_delete=models.CASCADE,related_name='reserva_estancia')
     fecha_llegada = models.DateTimeField(default=timezone.now)
     fecha_salida = models.DateTimeField(default=timezone.now)
     
@@ -43,7 +43,7 @@ class Servicio(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
     precio = models.FloatField()
-    reserva = models.ManyToManyField(Reserva,through='ReservaServicio')
+    reserva = models.ManyToManyField(Reserva,through='ReservaServicio',related_name='reserva_servicio')
     
 # Tabla intermedia entre los servicios y las reservas. Un servicio puede tener muchas reservas y una reserva muchos servicios.
     
@@ -66,22 +66,22 @@ class Empleado(models.Model):
 # Tabla donde se recoje la estancia del cliente en el hotel, que empleado ha realizado dicho checkin y a que hora se realizo.
     
 class CheckIn(models.Model):
-    estancia = models.OneToOneField(Estancia, on_delete=models.CASCADE)
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    estancia = models.OneToOneField(Estancia, on_delete=models.CASCADE,related_name='estancia_checkin')
+    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE,related_name='empleado_checkin')
     fecha_hora_check_in = models.DateTimeField(default=timezone.now)
     
 # Tabla donde se recoje la estancia del cliente en el hotel, que empleado ha realizado dicho checkout y a que hora se realizo.
     
 class CheckOut(models.Model):
-    estancia = models.OneToOneField(Estancia, on_delete=models.CASCADE)
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    estancia = models.OneToOneField(Estancia, on_delete=models.CASCADE,related_name='estancia_checkout')
+    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE,related_name='empleado_checkout')
     fecha_hora_check_out = models.DateTimeField(default=timezone.now)
     
 # Tabla sobre los comentarios de los clientes a sus habitaciones. Con una puntuacion que da el usuario en un momento determinado.
 
 class Comentario(models.Model):
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE,related_name='cliente_comentario')
+    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE,related_name='habitacion_comentario')
     puntuacion = models.IntegerField()
     comentario = models.TextField()
     fecha = models.DateTimeField(default=timezone.now)
@@ -93,7 +93,7 @@ class Comentario(models.Model):
 class Comodidad(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
-    habitacion = models.ManyToManyField(Habitacion,through='HabitacionComodidad')
+    habitacion = models.ManyToManyField(Habitacion,through='HabitacionComodidad',related_name='habitacion_comodidad')
     
 # Tabla de union entre las habitaciones y sus comodidades.
     
@@ -109,10 +109,11 @@ class Evento(models.Model):
     hora_inicio = models.DateTimeField(default=timezone.now)
     hora_final = models.DateTimeField(default=timezone.now)
     ubicacion = models.CharField(max_length=200)
-    reserva = models.ManyToManyField(Reserva,through='ReservaEvento')
+    reserva = models.ManyToManyField(Reserva,through='ReservaEvento',related_name="reserva_evento")
     
 # Tabla de union de los eventos con sus reservas
 
 class ReservaEvento(models.Model):
     reserva = models.ForeignKey(Reserva, on_delete=models.CASCADE)
     evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
+    

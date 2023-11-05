@@ -1,0 +1,23 @@
+{% block contenido %}
+
+{% for reserva in reservas %}
+    
+    <h1>Reserva:</h1>
+    <ul>
+        <li>Nombre del cliente: {{reserva.cliente.nombre}}</li>
+        <li>Correo electronico del cliente: {{reserva.cliente.correo_electronico}}</li>
+        <li>Telefono del cliente: {{reserva.cliente.telefono}}</li>
+        <li>Direccion del cliente: {{reserva.cliente.direccion}}</li>
+        <br>
+        <li>Fecha de entrada de la reserva: {{reserva.fecha_entrada}}</li>
+        <li>Fecha de salida de la reserva: {{reserva.fecha_salida}}</li>
+        <br>
+        <li>Habitacion de reserva: {{reserva.habitacion.numero_hab}} </li>
+        <li>Tipo de habitacion: {{reserva.habitacion.tipo}} </li>
+        <li>Precio noche de habitacion: {{reserva.habitacion.precio_noche}} </li>
+    </ul>
+    
+
+{% endfor %}
+
+{% endblock contenido %}

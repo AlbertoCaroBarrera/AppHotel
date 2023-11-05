@@ -1,0 +1,14 @@
+{% block contenido %}
+
+    {% for servicio in servicios %}
+        <h1>Servicio:</h1>
+        <ul>
+            <li>Nombre del servicio: {{servicio.nombre}}</li>
+            <li>Descripcion del servicio: {{servicio.descripcion}} </li>
+            <li>Precio del servicio: {{servicio.precio}} </li>
+        </ul>
+        
+    
+    {% endfor %}
+
+{% endblock contenido %}

@@ -1,0 +1,25 @@
+{% block contenido %}
+
+{% for empleado in empleados %}
+    <h1>Empleado</h1>
+    <ul>
+        <li>Nombre:{{empleado.nombre}}</li>
+        
+    </ul>
+    {% for checkin in empleado.empleado_checkin.all %}
+        <ul>
+            <li>Fecha de check in realizada: {{checkin.fecha_hora_check_in}}</li>
+        </ul>
+        
+    {%endfor%}
+    
+    {% for checkout in empleado.empleado_checkout.all %}
+        <ul>
+            <li>Fecha de check out realizada: {{checkout.fecha_hora_check_out}}</li>
+        </ul>
+        
+    {%endfor%}
+
+{% endfor %}
+
+{% endblock contenido %}

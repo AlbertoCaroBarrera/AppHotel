@@ -1,0 +1,15 @@
+{% block contenido %}
+
+{% for comentario in comentarios %}
+    <ul>
+        <li>Cliente que realiza el comentario: {{comentario.cliente.nombre}}</li>
+        <li>Habitacion sobre la que se comenta: {{comentario.habitacion.numero_hab}}</li>
+        <li>Puntuacion del comentario: {{comentario.puntuacion}} </li>
+        <li>Comentario: {{comentario.comentario}}</li>
+        <li>Fecha del comentario: {{comentario.fecha}} </li>
+    </ul>
+    
+
+{% endfor %}
+
+{% endblock contenido %}

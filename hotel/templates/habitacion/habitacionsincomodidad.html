@@ -1,0 +1,14 @@
+{% block contenido %}
+
+{% for habitacion in habitaciones %}
+    <h1>Habitación</h1>
+    <ul>
+        <li>Numero de la habitacion: {{habitacion.numero_hab}}</li>
+        <li>Tipo: {{habitacion.tipo}}</li>
+        <li>Precio por noche: {{habitacion.precio_noche}} </li>
+
+    </ul>
+
+{% endfor %}
+
+{% endblock contenido %}

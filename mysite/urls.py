@@ -18,5 +18,11 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("hotel.urls"))
+    path('',include("hotel.urls")),
+    
 ]
+from django.conf.urls import handler400,handler404,handler403,handler500
+handler404 = "hotel.views.mi_error_400"
+handler503 = "hotel.views.mi_error_403"
+handler503 = "hotel.views.mi_error_404"
+handler500 = "hotel.views.mi_error_500"

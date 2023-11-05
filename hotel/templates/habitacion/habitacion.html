@@ -1,0 +1,45 @@
+{% block contenido %}
+<h1>habitacion:</h1>
+    {%for habitacion in habitaciones%}
+        <ul>
+            <li>Numero de la habitacion: {{habitacion.numero_hab}}</li>
+            <li>Tipo de habitacion: {{habitacion.tipo}}</li>
+            <li>Precio por noche: {{habitacion.precio_noche}}</li>
+
+            <h4>Reservas</h4>
+            <ul>
+                {% for reserva in habitacion.habitacion_reserva.all %}
+                    <li>cliente: {{reserva.cliente.nombre}}</li>
+                    <li>fecha entrada: {{reserva.fecha_entrada}}</li>
+                    <li>fecha salida: {{reserva.fecha_salida}} </li>
+                    <br>
+                {%endfor%}
+            </ul>
+            <h4>Comentarios</h4>
+            <ul>
+                {% for comentarios in habitacion.habitacion_comentario.all %}
+                    <li>cliente: {{comentarios.cliente.nombre}}</li>
+                    <li>fecha entrada: {{comentarios.habitacion}}</li>
+                    <li>fecha salida: {{comentarios.puntuacion}} </li>
+                    <li>Comentario: {{comentarios.comentario}}</li>
+                    <li>Fecha: {{comentarios.fecha}}</li>
+                    <br>
+                {%endfor%}
+            </ul>
+            <h4>Comodidades</h4>
+            <ul>
+                {% for comodidad in habitacion.habitacion_comodidad.all %}
+                    <li>nombre: {{comodidad.nombre}}</li>
+                    <li>descripcion: {{comodidad.descripcion}}</li>
+
+                    <br>
+                {%endfor%}
+            </ul>
+        </ul>
+
+
+
+
+    {% endfor %}
+{% endblock contenido %}
+
