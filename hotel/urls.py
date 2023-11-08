@@ -12,5 +12,10 @@ urlpatterns = [
     path('Reservas/cliente/<int:id_cliente>',views.reservas_cliente,name='reservas_cliente'),
     path('Servicios/<int:precio1>/<int:precio2>',views.servicioconreserva,name="servicioconreserva"),
     path('Comodidades/<str:texto>',views.comodidades_texto,name="comodidades_texto"),
+    path('puntuacion/ultima/<int:id_evento>',views.ultimapuntuacion,name="ultimapuntuacion"),
+    path('eventos/puntuacion3/<int:id_cliente>',views.eventospuntuacion3,name="eventospuntuacion3"),
+    path('clientes/sinvotos',views.clientessinvotos,name="clientessinvotos"),
+    path('cuentas/nombre/<str:texto>',views.cuentas_nombre,name="cuentas_nombre"),
+    path('eventos/media',views.eventosconmediamayor,name="eventosconmediamayor"),
 ]
 

@@ -1,0 +1,23 @@
+{% block contenido %}
+
+{% for puntuacion in puntuaciones %}
+    <h1>Evento:</h1>
+    <ul>
+        <li>Nombre del evento: {{puntuacion.evento.nombre}}</li>
+        <li>Fecha inicio del evento: {{puntuacion.evento.hora_inicio}}</li>
+        <li>Fecha fin del evento: {{puntuacion.evento.hora_final}}</li>
+        <li>Ubicacion del evento: {{puntuacion.evento.ubicacion}}</li>
+        
+        <li>Valoracion del cliente: {{puntuacion.puntuacion}}</li>
+        <li>Comentario del cliente: {{puntuacion.comentario}}</li>
+        <li>Fecha del comentario: {{puntuacion.fecha}} </li>
+
+        <li>Nombre del cliente: {{puntuacion.cliente.nombre}}</li>
+        <li>Correo electronico del cliente: {{puntuacion.cliente.correo_electronico}}</li>
+        <li>Telefono del cliente: {{puntuacion.cliente.telefono}}</li>
+        <li>Direccion del cliente: {{puntuacion.cliente.direccion}}</li>
+    </ul>
+    
+{% endfor %}
+
+{% endblock contenido %}

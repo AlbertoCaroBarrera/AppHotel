@@ -117,3 +117,24 @@ class ReservaEvento(models.Model):
     reserva = models.ForeignKey(Reserva, on_delete=models.CASCADE)
     evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
     
+# Incluimos la tabla puntuacion que los clientes pueden votar los eventos
+
+class Puntuacion(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE,related_name='cliente_puntuacion')
+    evento = models.ForeignKey(Evento, on_delete=models.CASCADE,related_name='evento_puntuacion')
+    puntuacion = models.IntegerField()
+    comentario = models.TextField()
+    fecha = models.DateTimeField(default=timezone.now)
+
+# Incluimos la tabla de la cuentaBancaria del cliente ¡con numero de cuenta correspondiente.
+
+class CuentaBancaria(models.Model):
+    cliente = models.OneToOneField(Cliente,on_delete=models.CASCADE)
+    BANCOS = [
+            ("Ca","Caixa"), 
+            ("BB","BBVA"), 
+            ("Un", "UNICAJA"), 
+            ("In","ING")
+            ]
+    tipo = models.CharField(max_length=2,choices=BANCOS,default="Ca")
+    numero_cuenta = models.IntegerField()

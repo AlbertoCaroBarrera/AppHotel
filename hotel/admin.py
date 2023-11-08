@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento
+from .models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento,Puntuacion,CuentaBancaria
 	
 # Register your models here.
 admin.site.register(Cliente)
@@ -16,3 +16,5 @@ admin.site.register(Comodidad)
 admin.site.register(HabitacionComodidad)
 admin.site.register(Evento)
 admin.site.register(ReservaEvento)
+admin.site.register(Puntuacion)
+admin.site.register(CuentaBancaria)

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime
-from django.db.models import Q,Prefetch
-from hotel.models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento
+from django.db.models import Q,Prefetch,Avg
+from hotel.models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento,Puntuacion,CuentaBancaria
 
 # Create your views here.
 def index(request):
@@ -118,3 +118,43 @@ def mi_error_404(request,exception=None):
 
 def mi_error_500(request,exception=None):
     return render(request,'errores/500.html',None,None,500)
+
+
+# El último voto que se realizó en un modelo principal en concreto (para un evento concreto en mi caso), 
+# y mostrar el comentario, la votación e información del usuario o cliente que lo realizó.
+
+def ultimapuntuacion(request,id_evento):
+    puntuacion = Puntuacion.objects.select_related("cliente","evento")
+    puntuacion = puntuacion.filter(evento=id_evento).order_by('-fecha')[:1].get()
+    return render(request,"puntuacion/ultimapuntuacion.html",{"puntuaciones":puntuacion})
+
+# Todos los modelos principales(eventos) que tengan votos con una puntuación numérica igual a 3 y que realizó un usuario o cliente en concreto. 
+
+def eventospuntuacion3(request,id_cliente):
+    puntuacion = Puntuacion.objects.select_related("cliente","evento")
+    puntuacion = puntuacion.filter(puntuacion=3,cliente=id_cliente).all()
+    return render(request,"puntuacion/puntuacion3.html",{"puntuaciones":puntuacion})
+
+# Todos los usuarios o clientes que no han votado nunca y mostrar información sobre estos usuarios y clientes al completo..
+
+def clientessinvotos(request):
+    usuario = Cliente.objects.prefetch_related(Prefetch("cliente_puntuacion"))
+    usuario = usuario.filter(cliente_puntuacion=None).all()
+    return render(request,"cliente/sinpuntuacion.html",{"usuarios":usuario})
+
+# Obtener las cuentas bancarias que sean de la Caixa o de Unicaja y que el propietario tenga un nombre que contenga un texto en concreto, por ejemplo “Juan”.
+
+def cuentas_nombre(request,texto):
+    cuenta = CuentaBancaria.objects.select_related("cliente")
+    cuenta = cuenta.filter(Q(tipo="Ca")|Q(tipo="Un"))
+    cuenta = cuenta.filter(cliente__nombre__contains=texto).all()
+    return render(request,"cuenta/cuentas_nombre.html",{"cuentas":cuenta})
+
+# Obtener todos los modelos principales que tengan una media de votaciones mayor del 2,5.
+
+def eventosconmediamayor(request):
+    evento = Evento.objects.prefetch_related("reserva",Prefetch("evento_puntuacion"))
+    evento = evento.annotate(
+        media_puntuacion=Avg('evento_puntuacion__puntuacion')
+    ).filter(media_puntuacion__gt=2.5)
+    return render(request, 'evento/mediamayor.html', {'eventos': evento})
