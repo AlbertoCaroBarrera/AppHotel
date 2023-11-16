@@ -1,41 +1,7 @@
-{% extends "principal.html" %}
+{% extends 'principal.html' %}
 
 {% block contenido %}
-
-<h1>Este es mi index</h1>
-
-<a href="{% url 'lista_clientes' %}">Estos son todos nuestros clientes</a>
-<br>
-<a href="{% url 'habitacion_info' 6 %}">Informacion de la habitacion 6</a>
-<br>
-<a href="{% url 'eventos_info' 2023 11 4 %}">Informacion de los eventos que se realizan el 4 de noviembre de 2023</a>
-<br>
-<a href="{% url 'empleados_checkin_anio' 2023 %}">Informacion de los empleados que son recepcionistas e hicieron checkin en 2023</a>
-<br>
-<a href="{% url 'comentarios_texto' 'Purpose' %}">Comentarios que contienen el texto: Purpose</a>
-<br>
-<a href="{% url 'ultimo_cliente' %}">Ultimo cliente que ha salido de su Estancia</a>
-<br>
-<a href="{% url 'habitacion_sincomodidad' %}">Ver las habitaciones que no disponen de comodidades</a>
-<br>
-<a href="{% url 'reservas_cliente' 1 %}">Ver las reservas hechas por el cliente 1</a>
-<br>
-<a href="{% url 'servicioconreserva' 0 200 %}">Ver todos los servicios sin reservas que tengas un precio de entre 0 y 200</a>
-<br>
-<a href="{% url 'comodidades_texto' 'Arm'  %}">Ver las comodidades de las habitaciones que comiencen por 'Arm'</a>
-<br>
-<a href="{% url 'ultimapuntuacion' 1  %}">Ultima puntuacion del usuario de id 1</a>
-<br>
-<a href="{% url 'eventospuntuacion3' 1  %}">Todos los eventos que tienen una puntuacion de 3 y son del usuario de id 1</a>
-<br>
-<a href="{% url 'clientessinvotos'  %}">Mostrar informacion de todos los clientes que no han realizado una puntuacion</a>
-<br>
-<a href="{% url 'cuentas_nombre' 'Juan' %}">Cuentas de tipo caixa o unicaja que son de los clientes que contienen en el nombre 'Juan'</a>
-<br>
-<a href="{% url 'eventosconmediamayor' %}">Eventos que tengan una media de votaciones mayor del 2,5.</a>
-
-{% endblock contenido %}
+  <h1>Este es mi index</h1>
 
 
-
-
+{% endblock %}
