@@ -25,7 +25,7 @@ def habitacion_info(request,id_habitacion):
                                         Prefetch("habitacion_comentario"),
                                         Prefetch("habitacion_comodidad")
     )
-    habitacion = habitacion.filter(id= id_habitacion).all()
+    habitacion = habitacion.filter(id= id_habitacion).get()
     
     return render(request,"habitacion/habitacion.html",{"habitaciones":habitacion})
 

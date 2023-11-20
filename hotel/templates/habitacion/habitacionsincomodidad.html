@@ -3,13 +3,9 @@
 
 {% for habitacion in habitaciones %}
     <h1>Habitación</h1>
-    <ul>
-        <li>Numero de la habitacion: {{habitacion.numero_hab}}</li>
-        <li>Tipo: {{habitacion.tipo}}</li>
-        <li>Precio por noche: {{habitacion.precio_noche}} </li>
-
-    </ul>
-
+    {% include "habitacion/monstrar_habitacion.html" with habitaciones=habitacion %}
+    {% empty %}
+        <h1>Lo sentimos pero no hay habitacion</h1>
 {% endfor %}
 
 {% endblock contenido %}

@@ -9,7 +9,8 @@
             <li>Precio del servicio: {{servicio.precio}} </li>
         </ul>
         
-    
+        {% empty %}
+        <h1>Lo sentimos pero no hay servicios</h1>
     {% endfor %}
 
 {% endblock contenido %}
