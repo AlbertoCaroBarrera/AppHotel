@@ -17,5 +17,6 @@ urlpatterns = [
     path('clientes/sinvotos',views.clientessinvotos,name="clientessinvotos"),
     path('cuentas/nombre/<str:texto>',views.cuentas_nombre,name="cuentas_nombre"),
     path('eventos/media',views.eventosconmediamayor,name="eventosconmediamayor"),
+    path('habitacion/formulario',views.habitacion_create,name="habitacion_create"),
 ]
 

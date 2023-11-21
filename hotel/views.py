@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import datetime
 from django.db.models import Q,Prefetch,Avg
 from hotel.models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento,Puntuacion,CuentaBancaria
-
+from hotel.forms import *
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -83,9 +83,9 @@ def habitacion_sincomodidad(request):
 
 def reservas_cliente(request,id_cliente):
     reserva = Reserva.objects.prefetch_related("cliente",
-                                               "habitacion",
-                                               Prefetch("reserva_estancia"),
-                                               Prefetch("reserva_evento"))
+                                                "habitacion",
+                                                Prefetch("reserva_estancia"),
+                                                Prefetch("reserva_evento"))
     reserva = reserva.filter(cliente=id_cliente).all()
     return render(request,"reserva/reservacliente.html",{"reservas":reserva})
 
@@ -158,3 +158,9 @@ def eventosconmediamayor(request):
         media_puntuacion=Avg('evento_puntuacion__puntuacion')
     ).filter(media_puntuacion__gt=2.5)
     return render(request, 'evento/mediamayor.html', {'eventos': evento})
+
+# formularios
+
+def habitacion_create(request):
+    formulario = HabitacionForm()
+    return render(request,"habitacion/create.html",{'formulario':formulario})
