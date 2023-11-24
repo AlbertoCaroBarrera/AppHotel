@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from datetime import datetime
 from django.db.models import Q,Prefetch,Avg
 from hotel.models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento,Puntuacion,CuentaBancaria
@@ -162,5 +162,18 @@ def eventosconmediamayor(request):
 # formularios
 
 def habitacion_create(request):
-    formulario = HabitacionForm()
+    datosFormulario = None
+    if request.method == "POST":
+        datosFormulario = request.POST
+    
+    formulario = HabitacionForm(datosFormulario)
+    if (request.method == "POST"):
+        if formulario.is_valid():
+            try:
+                formulario.save()
+                return redirect("index")
+            except Exception as error:
+                print(error)
+    
+    
     return render(request,"habitacion/create.html",{'formulario':formulario})

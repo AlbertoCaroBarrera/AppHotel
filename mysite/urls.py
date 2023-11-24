@@ -19,7 +19,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include("hotel.urls")),
-    
+    path("__debug__/", include("debug_toolbar.urls")),
+
 ]
 from django.conf.urls import handler400,handler404,handler403,handler500
 handler404 = "hotel.views.mi_error_400"

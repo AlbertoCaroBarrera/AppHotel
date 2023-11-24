@@ -17,11 +17,13 @@ class HabitacionForm(ModelForm):
         
     def clean(self):
         super().clean()
-        numero_hab = self.clean_data.get('numero_hab')
-        tipo = self.clean_data.get('tipo')
-        precio = self.clean_data.get('precio')
+        numero_hab = self.cleaned_data.get('numero_hab')
+        tipo = self.cleaned_data.get('tipo')
+        precio = self.cleaned_data.get('precio')
         # comprobamos que no exista una habitacion con ese mismo numero_hab
         habitacionNumero = Habitacion.objects.filter(numero_hab=numero_hab).first()
+        
         if (not habitacionNumero is None):
             self.add_error('numero_hab','Ya existe una habitacion con ese numero')
-            return self.cleaned_data
+            
+        return self.cleaned_data
