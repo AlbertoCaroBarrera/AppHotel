@@ -18,5 +18,6 @@ urlpatterns = [
     path('cuentas/nombre/<str:texto>',views.cuentas_nombre,name="cuentas_nombre"),
     path('eventos/media',views.eventosconmediamayor,name="eventosconmediamayor"),
     path('habitacion/formulario',views.habitacion_create,name="habitacion_create"),
+    path('habitacion/buscar',views.habitacion_buscar,name="habitacion_buscar"),
 ]
 

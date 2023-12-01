@@ -1,4 +1,5 @@
-from django.forms import ModelForm
+from django import forms
+from django.forms import *
 from hotel.models import *
 class HabitacionForm(ModelForm):
     class Meta:
@@ -27,3 +28,8 @@ class HabitacionForm(ModelForm):
             self.add_error('numero_hab','Ya existe una habitacion con ese numero')
             
         return self.cleaned_data
+    
+
+class BusquedaHabitacionForm(forms.Form):
+    textoBusqueda = forms.CharField(required=True)
+    

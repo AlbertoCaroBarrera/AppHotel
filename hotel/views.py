@@ -177,3 +177,14 @@ def habitacion_create(request):
     
     
     return render(request,"habitacion/create.html",{'formulario':formulario})
+
+def habitacion_buscar(request):
+    formulario = BusquedaHabitacionForm(request.GET)
+    if formulario.is_valid():
+        texto  = formulario.cleaned_data.get('textoBusqueda')
+        habitacion = Habitacion.objects.filter(Q(numero_hab=texto)|Q(tipo__contains=texto)|Q(precio_noche=texto)).all()
+        return render(request,'habitacion/lista_habitacion.html',{"habitacion_mostrar":habitacion},{"texto_busqueda":texto})
+    if("HTTP_REFERER" in request.META):
+        return redirect(request.META["HTTP_REFERER"])
+    else:
+        return redirect("index")
