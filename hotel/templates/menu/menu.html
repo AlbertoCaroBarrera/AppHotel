@@ -1,5 +1,8 @@
 <nav>
     <ul class="links_navagacion">
+        <li class="link">
+            <a href="{% url 'index' %}">Inicio</a>
+        </li>
         <!--
 
         
@@ -45,10 +48,10 @@
         <li class="link">
             <a href="{% url 'cuentas_nombre' 'Juan' %}">Cuentas de tipo caixa o unicaja que son de los clientes que contienen en el nombre 'Juan'</a>
         </li>
-        -->
         <li class="link">
             <a href="{% url 'eventosconmediamayor' %}">Eventos que tengan una media de votaciones mayor del 2,5.</a>
         </li>
+        -->
         <li>
             <form action="{% url 'habitacion_buscar' %}" class="d-flex mt-3" role="search" method="GET" >
                 <input name="textoBusqueda" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">

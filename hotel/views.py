@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from datetime import datetime
-from django.db.models import Q,Prefetch,Avg
-from hotel.models import Cliente, Habitacion, Reserva, Estancia, Servicio, ReservaServicio, Empleado, CheckIn, CheckOut, Comentario, Comodidad, HabitacionComodidad, Evento, ReservaEvento,Puntuacion,CuentaBancaria
-from hotel.forms import *
+from django.db.models import Q,Prefetch
+from django.forms import modelform_factory
+from .models import *
+from .forms import *
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -15,7 +16,7 @@ def listar_clientes(request):
                                 Prefetch("cliente_comentario")
     ).all()
     
-    return render(request,"lista/clientes.html",{"clientes":cliente})
+    return render(request,"cliente/cliente_list.html",{"clientes":cliente})
 
 #2 vista para ver informacion sobre una habitacion en concreto
 
@@ -174,8 +175,8 @@ def habitacion_create(request):
                 return redirect("index")
             except Exception as error:
                 print(error)
-    
-    
+
+
     return render(request,"habitacion/create.html",{'formulario':formulario})
 
 def habitacion_buscar(request):
@@ -183,8 +184,120 @@ def habitacion_buscar(request):
     if formulario.is_valid():
         texto  = formulario.cleaned_data.get('textoBusqueda')
         habitacion = Habitacion.objects.filter(Q(numero_hab=texto)|Q(tipo__contains=texto)|Q(precio_noche=texto)).all()
-        return render(request,'habitacion/lista_habitacion.html',{"habitacion_mostrar":habitacion},{"texto_busqueda":texto})
+        return render(request,'habitacion/lista_habitacion.html',{"habitacion_mostrar":habitacion,"texto_busqueda":texto})
     if("HTTP_REFERER" in request.META):
         return redirect(request.META["HTTP_REFERER"])
     else:
         return redirect("index")
+
+def habitacion_editar(request,habitacion_id):
+    habitacion = Habitacion.objects.get(id=habitacion_id)
+    
+    datosFormulario = None
+    
+    if request.method == "POST":
+        datosFormulario = request.POST
+    
+    formulario = HabitacionForm(datosFormulario,istance = habitacion)
+    
+    if request.method == "POST":
+        if formulario.is_valir():
+            formulario.save()
+            try:
+                formulario.save()
+                return redirect("habitacion_lista")
+            except Exception as e:
+                pass
+    return render(request,"habitacion/actualizar.html",{"formulario":formulario,"habitacion":habitacion})
+
+
+def cliente_create(request):
+    # Si la petición es GET se creará el formulario Vacío
+    # Si la petición es POST se creará el formulario con Datos.
+    datosFormulario = None
+    if request.method == "POST":
+        datosFormulario = request.POST
+    
+    formulario = ClienteForm(datosFormulario)
+
+    
+    if (request.method == "POST"):
+        cliente_creado = crear_Cliente_modelo(formulario)
+        if(cliente_creado):
+             messages.success(request, 'Se ha creado el cliente'+formulario.cleaned_data.get('nombre')+" correctamente")
+             return redirect("lista_clientes")
+    return render(request,"cliente/create.html", {"formulario_cliente":formulario})
+
+
+
+def crear_Cliente_modelo(formulario):
+    cliente_creado = False
+
+    if formulario.is_valid():
+        try:
+ 
+            formulario.save()
+            cliente_creado = True
+        except:
+            pass
+    return cliente_creado
+
+
+def cliente_busqueda_avanzada(request):
+
+    if (len(request.GET)>0):
+        formulario = BusquedaAvanzadaClienteForm(request.GET)
+        if formulario.is_valid():
+            mensaje="Se ha buscado por:\n"
+            
+            QScliente = Cliente.objects
+            
+            textoBusqueda=formulario.cleaned_data.get('textoBusqueda')
+            telefono=formulario.cleaned_data.get('telefono')
+
+            if textoBusqueda is not None:
+                QScliente = QScliente.filter(Q(nombre__contains=textoBusqueda) | Q(correo_electronico__contains=textoBusqueda) | Q(direccion__contains=textoBusqueda))
+                mensaje+=" Contiene: "+ textoBusqueda+"\n"
+            
+            if telefono is not None:
+                QScliente = QScliente.filter(telefono__startswith=telefono)
+                mensaje+= str(telefono)+"\n"
+            
+            cliente = QScliente.all()
+            
+            return render(request,'cliente/cliente_list.html',{"clientes":cliente, "texto":mensaje})
+    else:
+        formulario = BusquedaAvanzadaClienteForm(None)
+    return render(request,'cliente/cliente_busqueda.html',{"formulario":formulario})
+
+def cliente_editar(request,cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    
+    datosFormulario = None
+    
+    if request.method == "POST":
+        datosFormulario = request.POST
+    
+    
+    formulario = ClienteForm(datosFormulario,instance = cliente)
+    
+    if (request.method == "POST"):
+       
+        if formulario.is_valid():
+            try:  
+                formulario.save()
+                messages.success(request, 'Se ha editado el cliente'+formulario.cleaned_data.get('nombre')+" correctamente")
+                return redirect('lista_clientes')  
+            except Exception as error:
+                print(error)
+    return render(request, 'cliente/actualizar.html',{"formulario":formulario,"cliente":cliente})
+
+def cliente_eliminar(request,cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    try:
+        cliente.delete()
+        messages.success(request, "Se ha elimnado el cliente "+cliente.nombre+" correctamente")
+    except Exception as error:
+        print(error)
+    return redirect('lista_clientes')
+    

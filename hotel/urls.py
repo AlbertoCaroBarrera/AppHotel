@@ -19,5 +19,12 @@ urlpatterns = [
     path('eventos/media',views.eventosconmediamayor,name="eventosconmediamayor"),
     path('habitacion/formulario',views.habitacion_create,name="habitacion_create"),
     path('habitacion/buscar',views.habitacion_buscar,name="habitacion_buscar"),
+    path('habitacion/editar/<int:habitacion_id>',views.habitacion_editar,name='habitacion_editar'),
+    
+    path('clientes/formulario',views.cliente_create,name="cliente_create"),
+    path('cliente/busqueda',views.cliente_busqueda_avanzada,name="cliente_busqueda_avanzada"),
+    path('cliente/editar/<int:cliente_id>',views.cliente_editar,name='cliente_editar'),
+    path('cliente/eliminar/<int:cliente_id>',views.cliente_eliminar,name='cliente_eliminar'),
+    
 ]
 

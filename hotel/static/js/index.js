@@ -1,1 +1,7 @@
-//alert("El archivo se ha cargado correctamente")
+function eliminar() {
+    var x = confirm("¿Eliminar Libro ?");
+    if (x)
+      return true;
+    else
+      return false;
+}

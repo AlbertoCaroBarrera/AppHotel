@@ -65,8 +65,7 @@ a {
 
 
 .pie-pagina{
-    position: fixed;
-    bottom: 0;
+
     width: 100%;
     background-color: var(--primary-color);
     border-top: 1px solid var(--white);
