@@ -3,6 +3,15 @@
         <li class="link">
             <a href="{% url 'index' %}">Inicio</a>
         </li>
+        <li class="link">
+            <a href="{% url 'lista_clientes' %}">Lista de clientes</a>
+        </li>
+        <li class="link">
+            <a href="{% url 'cliente_create' %}">Crear cliente</a>
+        </li>
+        <li class="link">
+            <a href="{% url 'cliente_busqueda_avanzada' %}">Busqueda avanzada de cliente</a>
+        </li>
         <!--
 
         
@@ -51,7 +60,6 @@
         <li class="link">
             <a href="{% url 'eventosconmediamayor' %}">Eventos que tengan una media de votaciones mayor del 2,5.</a>
         </li>
-        -->
         <li>
             <form action="{% url 'habitacion_buscar' %}" class="d-flex mt-3" role="search" method="GET" >
                 <input name="textoBusqueda" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -59,5 +67,6 @@
             </form>
         </li>
     </ul>
+-->
 </nav>
 
