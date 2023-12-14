@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-
+from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
 # Create your models here.
 
 # Creamos una tabla de los clientes del hotel
@@ -138,3 +138,12 @@ class CuentaBancaria(models.Model):
             ]
     tipo = models.CharField(max_length=2,choices=BANCOS,default="Ca")
     numero_cuenta = models.IntegerField()
+    
+# Modelo del examen de formulario
+
+class Promocion(models.Model):
+    nombre = models.CharField(max_length=255, unique=True)
+    descripcion = models.TextField(validators=[MinLengthValidator(100)])
+    usuario = models.ForeignKey(Cliente,related_name="promocion_usuario",on_delete=models.CASCADE)
+    descuento = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
+    fecha_fin = models.DateField()

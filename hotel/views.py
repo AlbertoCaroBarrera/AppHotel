@@ -300,4 +300,114 @@ def cliente_eliminar(request,cliente_id):
     except Exception as error:
         print(error)
     return redirect('lista_clientes')
+
+#Examen formularios
+
+def lista_promociones(request):
+    promociones = Promocion.objects.all()
+    return render(request, 'promocion/lista_promociones.html', {'promociones': promociones})
+
+
+
+def promocion_create(request):
+    datosFormulario = None
+    if request.method == "POST":
+        datosFormulario = request.POST
     
+    formulario = PromocionForm(datosFormulario)
+
+    
+    if (request.method == "POST"):
+        promocion_creado = crear_Promocion_modelo(formulario)
+        if(promocion_creado):
+            messages.success(request, 'Se ha creado la promocion'+formulario.cleaned_data.get('nombre')+" correctamente")
+            return redirect("lista_promociones")
+    return render(request,"promocion/create.html", {"formulario_promocion":formulario})
+
+
+
+def crear_Promocion_modelo(formulario):
+    promocion_creado = False
+
+    if formulario.is_valid():
+        try:
+            formulario.save()
+            promocion_creado = True
+        except:
+            pass
+    return promocion_creado
+
+
+
+def promocion_busqueda_avanzada(request):
+
+    if (len(request.GET)>0):
+        formulario = BusquedaAvanzadaPromocionForm(request.GET)
+        if formulario.is_valid():
+            mensaje="Se ha buscado por:\n"
+            
+            QSpromocion = Promocion.objects
+            
+            textoBusqueda=formulario.cleaned_data.get('textoBusqueda')
+            fecha_fin_desde=formulario.cleaned_data.get('fecha_fin_desde')
+            fecha_fin_hasta=formulario.cleaned_data.get('fecha_fin_hasta')
+            descuento_minimo=formulario.cleaned_data.get('descuento_minimo')
+            usuarios=formulario.cleaned_data.get('usuarios')
+            
+
+
+            if textoBusqueda is not None:
+                QSpromocion = QSpromocion.filter(Q(nombre__contains=textoBusqueda) | Q(descripcion__contains=textoBusqueda))
+                mensaje+=" Contiene: "+ textoBusqueda+"\n"
+            
+            if fecha_fin_desde:
+                promociones = promociones.filter(fecha_fin__gte=fecha_fin_desde)
+
+            if fecha_fin_hasta:
+                promociones = promociones.filter(fecha_fin__lte=fecha_fin_hasta)
+
+            if descuento_minimo is not None:
+                promociones = promociones.filter(descuento__gte=descuento_minimo)
+
+            if usuarios:
+                promociones = promociones.filter(usuario__in=usuarios)
+            
+            promocion = QSpromocion.all()
+            
+            return render(request,'promocion/lista_promociones.html',{"promociones":promocion, "texto":mensaje})
+    else:
+        formulario = BusquedaAvanzadaPromocionForm(None)
+    return render(request,'promocion/promocion_busqueda.html',{"formulario":formulario})
+
+
+def promocion_editar(request,promocion_id):
+    promocion = Promocion.objects.get(id=promocion_id)
+    
+    datosFormulario = None
+    
+    if request.method == "POST":
+        datosFormulario = request.POST
+    
+    
+    formulario = PromocionForm(datosFormulario,instance = promocion)
+    
+    if (request.method == "POST"):
+
+        if formulario.is_valid():
+            try:  
+                formulario.save()
+                messages.success(request, 'Se ha editado la promocion'+formulario.cleaned_data.get('nombre')+" correctamente")
+                return redirect('lista_promociones')
+            except Exception as error:
+                print(error)
+    return render(request, 'promocion/actualizar.html',{"formulario":formulario,"promocion":promocion})
+
+
+def promocion_eliminar(request,promocion_id):
+    promocion = Promocion.objects.get(id=promocion_id)
+    try:
+        promocion.delete()
+        messages.success(request, "Se ha elimnado el promocion "+promocion.nombre+" correctamente")
+    except Exception as error:
+        print(error)
+    return redirect('lista_promociones')

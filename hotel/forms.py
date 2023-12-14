@@ -127,3 +127,94 @@ class BusquedaAvanzadaClienteForm(forms.Form):
                 self.add_error('telefono','Debe tener 9 digitos')
 
         return self.cleaned_data
+    
+    
+# Formularios del examen
+
+
+class PromocionForm(ModelForm):
+    class Meta:
+        model = Promocion
+        fields = ['nombre', 'descripcion', 'usuario', 'descuento','fecha_fin']
+        labels = {
+            "nombre": ("Nombre"),
+            "descripcion": ("Descripcion"),
+            "usuario": ("Introduzca el usuario"),
+            "descuento": ("descuento"),
+            "fecha_fin":'fecha_fin'
+        }
+        
+        help_texts = {
+            "nombre": ("el nombre tiene que ser único."),
+            "descripcion": ("Debe tener al menos 100 caracteres"),
+            "usuario": ("Un usuario no puede usar la misma promoción dos veces"),
+            "descuento": ("Tiene que ser un valor entero entre 0 y 100"),
+            "fecha_fin":('Esta fecha no puede inferior a la fecha actual')
+        }
+
+    def clean(self):
+        super().clean()
+
+        descripcion = self.cleaned_data.get("descripcion")
+        usuario = self.cleaned_data.get("usuario")
+        descuento = self.cleaned_data.get("descuento")
+        fecha_fin = self.cleaned_data.get("fecha_fin")
+
+        existing_promocion = Promocion.objects.filter(usuario=usuario).first()
+        if existing_promocion:
+            self.add_error("usuario","Este usuario ya tiene una promoción asociada.")
+
+        if len(descripcion) < 100:
+            self.add_error("descripcion","La descripción debe tener al menos 100 caracteres.")
+
+        if fecha_fin < timezone.now().date():
+            self.add_error("fecha_fin","La fecha fin no puede ser inferior a la fecha actual.")
+
+        if not 0 <= descuento <= 100:
+            self.add_error("descuento","El descuento debe ser un valor entero entre 0 y 100.")
+
+        return self.cleaned_data
+    
+
+class BusquedaAvanzadaPromocionForm(forms.Form):
+    textoBusqueda = forms.CharField(required=False, label='Buscar en nombre y descripción')
+    fecha_fin_desde = forms.DateField(required=False, label='Fecha fin desde')
+    fecha_fin_hasta = forms.DateField(required=False, label='Fecha fin hasta')
+    descuento_minimo = forms.IntegerField(required=False, label='Descuento mínimo')
+    usuarios = forms.ModelMultipleChoiceField(
+        queryset=Cliente.objects.all(),  
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        label='Usuarios'
+    )
+    
+
+    def clean(self):
+        super().clean()
+        textoBusqueda=self.cleaned_data.get('textoBusqueda')
+        fecha_fin_desde=self.cleaned_data.get('fecha_fin_desde')
+        fecha_fin_hasta=self.cleaned_data.get('fecha_fin_hasta')
+        descuento_minimo=self.cleaned_data.get('descuento_minimo')
+
+        if(textoBusqueda == "" 
+           and fecha_fin_desde is None
+           and fecha_fin_hasta is None
+           ):
+            self.add_error('textoBusqueda','Debe introducir al menos un valor en un campo del formulario')
+            self.add_error('fecha_fin_desde','Debe introducir al menos un valor en un campo del formulario')
+            self.add_error('fecha_fin_hasta','Debe introducir al menos un valor en un campo del formulario')
+        else:
+            if(textoBusqueda == "" is None):
+                self.add_error('textoBusqueda','Debes introducir algún valor')
+            else:
+                if len(textoBusqueda) < 100:
+                    self.add_error("textoBusqueda","La descripción debe tener al menos 100 caracteres.")
+
+            if(not fecha_fin_desde is None  and not fecha_fin_hasta is None and fecha_fin_hasta < fecha_fin_desde):
+                self.add_error('fecha_fin_desde','La fecha hasta no puede ser menor que la fecha desde')
+                self.add_error('fecha_fin_hasta','La fecha hasta no puede ser menor que la fecha desde')
+
+            if not 0 <= descuento_minimo <= 100:
+                self.add_error("descuento_minimo","El descuento debe ser un valor entero entre 0 y 100.")
+
+        return self.cleaned_data

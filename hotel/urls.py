@@ -26,5 +26,14 @@ urlpatterns = [
     path('cliente/editar/<int:cliente_id>',views.cliente_editar,name='cliente_editar'),
     path('cliente/eliminar/<int:cliente_id>',views.cliente_eliminar,name='cliente_eliminar'),
     
+    path('lista/promociones', views.lista_promociones, name='lista_promociones'),
+    path('promocion/formulario',views.promocion_create,name="promocion_create"),
+    path('promocion/busqueda',views.promocion_busqueda_avanzada,name="promocion_busqueda_avanzada"),
+    path('promocion/editar/<int:promocion_id>',views.promocion_editar,name='promocion_editar'),
+    path('promocion/eliminar/<int:promocion_id>',views.promocion_eliminar,name='promocion_eliminar'),
+    
+    
+    
+    
 ]
 
