@@ -76,3 +76,74 @@ comentario: No puede estar vacío.
 BusquedaAvanzadaComentarioForm:
 texto_busqueda: Debe tener al menos 1 caracter si se proporciona.
 puntuacion_minima y puntuacion_maxima: La puntuación máxima no puede ser menor que la puntuación mínima.
+
+## Funcionalidades
+
+La aplicación ofrece las siguientes funcionalidades:
+
+1. **Gestión de Habitaciones:**
+   - Añadir, editar y eliminar habitaciones.
+   - Buscar habitaciones por diferentes criterios.
+
+2. **Gestión de Clientes:**
+   - Registrar nuevos clientes.
+   - Buscar clientes por nombre, teléfono, etc.
+
+3. **Gestión de Reservas:**
+   - Realizar y gestionar reservas de habitaciones.
+   - Buscar reservas por fecha, cliente, etc.
+
+4. **Gestión de Servicios:**
+   - Añadir, editar y eliminar servicios disponibles.
+   - Asociar servicios a reservas.
+
+5. **Gestión de Comentarios:**
+   - Añadir comentarios y puntuaciones a las habitaciones.
+
+6. **Autenticación y Autorización:**
+   - Registro de usuarios con diferentes roles.
+   - Autenticación y autorización de usuarios.
+
+7. **Promociones:**
+   - Crear y gestionar promociones para clientes.
+
+8. **Búsqueda Avanzada:**
+   - Formularios de búsqueda avanzada en diferentes secciones.
+
+## Tipos de Usuarios
+
+### Cliente
+
+- **Funcionalidades:**
+  - Realizar reservas.
+  - Acceder a promociones.
+  - Dejar comentarios y puntuaciones.
+
+### Empleado
+
+- **Funcionalidades:**
+  - Gestionar habitaciones, clientes, reservas, servicios, etc.
+  - Acceder a funciones administrativas.
+
+### Administrador del Sistema
+
+- **Funcionalidades:**
+  - Acceso total a todas las funcionalidades.
+  - Administrar usuarios y roles.
+  - Configuración del sistema.
+
+## Diferencias entre Usuarios
+
+- **Cliente:**
+  - Enfoque en la interacción con reservas y servicios.
+  - Acceso limitado a funciones administrativas.
+
+- **Empleado:**
+  - Capacidad para gestionar y administrar recursos del hotel.
+  - Acceso a funciones administrativas.
+
+- **Administrador del Sistema:**
+  - Acceso completo a todas las funcionalidades.
+  - Capacidad para administrar usuarios y roles.
+
+  LOS PERMIDOS NO ESTAN PUESTOS EN LAS VIEWS AÚN
