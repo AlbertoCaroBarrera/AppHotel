@@ -1,0 +1,32 @@
+{% extends "principal.html" %}
+{% load bootstrap5 %}
+
+{% block contenido %}
+
+
+    <form action = "{% url 'buscar_servicios' %}" method = "GET">
+       
+        {% csrf_token %}
+
+
+        <div class="mb-4">
+            {% bootstrap_field formulario.texto_busqueda show_label=True %}
+        </div>
+
+        <div class="mb-4">
+            {% bootstrap_field formulario.precio_minimo show_label=True %}
+        </div>
+
+        <div class="mb-4">
+            {% bootstrap_field formulario.precio_maximo show_label=True %}
+        </div>
+        
+        <div class="mb-4">
+            {% bootstrap_field formulario.reservas show_label=True %}
+        </div>
+       
+        {% buttons %}
+            <button type="submit" class="btn btn-primary" >Enviar</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

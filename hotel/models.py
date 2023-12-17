@@ -2,15 +2,31 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.core.validators import MinLengthValidator, MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 # Creamos una tabla de los clientes del hotel
+class Usuario(AbstractUser):
+    ADMINISTRADOR = 1
+    CLIENTE = 2
+    EMPLEADO = 3
+    ROLES = ((ADMINISTRADOR, 'administrador'),
+            (CLIENTE,'cliente'),
+            (EMPLEADO,'empleado'))
+    
+    ROL = models.PositiveSmallIntegerField(
+        choices=ROLES,default=1
+    )
+
 
 class Cliente(models.Model):
+    usuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
     nombre = models.CharField(max_length=200)
     correo_electronico = models.EmailField()
-    telefono = models.IntegerField()
+    telefono = models.CharField(max_length=200)
     direccion =  models.TextField()
+    def __str__(self):
+        return self.nombre
     
 # Creamos una tabla de las habitaciones del hotel
     
@@ -18,6 +34,8 @@ class Habitacion(models.Model):
     numero_hab = models.IntegerField()
     tipo = models.CharField(max_length=200)
     precio_noche = models.FloatField()
+    def __str__(self):
+        return self.tipo
 
 # Creamos una tabla con las reservas de los clientes y las habitaciones que han reservado
 
@@ -44,7 +62,9 @@ class Servicio(models.Model):
     descripcion = models.TextField()
     precio = models.FloatField()
     reserva = models.ManyToManyField(Reserva,through='ReservaServicio',related_name='reserva_servicio')
-    
+    def __str__(self):
+        return self.nombre
+
 # Tabla intermedia entre los servicios y las reservas. Un servicio puede tener muchas reservas y una reserva muchos servicios.
     
 class ReservaServicio(models.Model):
@@ -55,6 +75,7 @@ class ReservaServicio(models.Model):
 # Tabla con los empleados del hotel.
 
 class Empleado(models.Model):
+    usuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
     nombre = models.CharField(max_length=200)
     trabajo = [("Bo","Botones"),("Re","Recepcionista"),("Se","Servicio de habitaciones"),("At","Atencion al cliente"),("Gp","Gestion y protocolo")]
     cargo = models.CharField(
@@ -62,6 +83,8 @@ class Empleado(models.Model):
         choices=trabajo,
         default="Bo"
     )
+    def __str__(self):
+        return self.nombre
     
 # Tabla donde se recoje la estancia del cliente en el hotel, que empleado ha realizado dicho checkin y a que hora se realizo.
     
@@ -85,6 +108,8 @@ class Comentario(models.Model):
     puntuacion = models.IntegerField()
     comentario = models.TextField()
     fecha = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return self.comentario
     
     
 # Las comodidades a diferencia de los servicios , son las comodidades que dispone cada habitacion.(Los servicios son del hotel en general) 
@@ -94,7 +119,8 @@ class Comodidad(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
     habitacion = models.ManyToManyField(Habitacion,through='HabitacionComodidad',related_name='habitacion_comodidad')
-    
+    def __str__(self):
+        return self.nombre
 # Tabla de union entre las habitaciones y sus comodidades.
     
 class HabitacionComodidad(models.Model):
@@ -110,7 +136,8 @@ class Evento(models.Model):
     hora_final = models.DateTimeField(default=timezone.now)
     ubicacion = models.CharField(max_length=200)
     reserva = models.ManyToManyField(Reserva,through='ReservaEvento',related_name="reserva_evento")
-    
+    def __str__(self):
+        return self.nombre
 # Tabla de union de los eventos con sus reservas
 
 class ReservaEvento(models.Model):

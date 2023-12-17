@@ -1,72 +1,125 @@
-<nav>
-    <ul class="links_navagacion">
-        <li class="link">
-            <a href="{% url 'index' %}">Inicio</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-evenly">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
         </li>
-        <li class="link">
-            <a href="{% url 'lista_promociones' %}">Lista de promociones</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Habitacion</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'lista_habitaciones' %}">Lista de habitaciones</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'habitacion_create' %}">Crear habitacion</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "habitacion_busqueda_avanzada" %}">Busqueda avanzada de una habitacion</a>
+            </li>
+          </ul>
         </li>
-        <li class="link">
-            <a href="{% url 'promocion_create' %}">Crear promocion</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clientes</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'listar_clientes' %}">Lista de todos los clientes</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'cliente_create' %}">Crear cliente</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "cliente_busqueda_avanzada" %}">Busqueda avanzada cliente</a>
+            </li>
+          </ul>
         </li>
-        <li class="link">
-            <a href="{% url 'promocion_busqueda_avanzada' %}">Busqueda avanzada de promocion</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reservas</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'listar_reservas' %}">Listado de reservas</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "reserva_create" %}">Crear nueva reserva</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "buscar_reservas" %}">Busqueda avanzada de reservas</a>
+            </li>
+          </ul>
         </li>
-        <!--
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url "listar_servicios" %}">Listado de servicios</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "crear_servicio" %}">Crear nuevo servicio</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "buscar_servicios" %}">Busqueda avanzada de servicios</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Empleados</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url "listar_empleados" %}">Lista de todos los empleados</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url "crear_empleado" %}">Crear un nuevo empleado</a>
+            </li>
 
-        
-        <li class="link">
-            <a href="{% url 'lista_clientes' %}">Estos son todos nuestros clientes</a>
+            <li>
+              <a class="dropdown-item" href="{% url "buscar_empleados" %}">Busqueda avanzada de empleados</a>
+            </li>
+          </ul>
         </li>
-        <li class="link">
-            <a href="{% url 'habitacion_info' 6 %}">Informacion de la habitacion 6</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comentarios</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'listar_comentarios' %}">Lista de todos los comentarios</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'crear_comentario' %}">Crear un nuevo comentario</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'buscar_comentarios' %}">Busqueda avanzada de un nuevo comentario</a>
+            </li>
+          </ul>
         </li>
-        <li class="link">
-            <a href="{% url 'eventos_info' 2023 11 4 %}">Informacion de los eventos que se realizan el 4 de noviembre de 2023</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'empleados_checkin_anio' 2023 %}">Informacion de los empleados que son recepcionistas e hicieron checkin en 2023</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'comentarios_texto' 'Purpose' %}">Comentarios que contienen el texto: Purpose</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'ultimo_cliente' %}">Ultimo cliente que ha salido de su Estancia</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'habitacion_sincomodidad' %}">Ver las habitaciones que no disponen de comodidades</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'reservas_cliente' 1 %}">Ver las reservas hechas por el cliente 1</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'servicioconreserva' 0 200 %}">Ver todos los servicios sin reservas que tengas un precio de entre 0 y 200</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'comodidades_texto' 'Arm' %}">Ver las comodidades de las habitaciones que comiencen por 'Arm'</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'ultimapuntuacion' 1 %}">Ultima puntuacion del usuario de id 1</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'eventospuntuacion3' 1 %}">Todos los eventos que tienen una puntuacion de 3 y son del usuario de id 1</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'clientessinvotos' %}">Mostrar informacion de todos los clientes que no han realizado una puntuacion</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'cuentas_nombre' 'Juan' %}">Cuentas de tipo caixa o unicaja que son de los clientes que contienen en el nombre 'Juan'</a>
-        </li>
-        <li class="link">
-            <a href="{% url 'eventosconmediamayor' %}">Eventos que tengan una media de votaciones mayor del 2,5.</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Promocion</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="{% url 'lista_promociones' %}">Lista de promociones</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'promocion_create' %}">Crear promocion</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'promocion_busqueda_avanzada' %}">Busqueda avanzada de promocion</a>
+            </li>
+          </ul>
         </li>
         <li>
-            <form action="{% url 'habitacion_buscar' %}" class="d-flex mt-3" role="search" method="GET" >
-                <input name="textoBusqueda" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-light btn-outline-dark" type="submit">Search</button>
-            </form>
+          {% if not request.user.is_authenticated %}
+          <a class="btn btn-outline-warning" href="{% url 'registrar_usuario' %}">Registrarse</a>
+          {% endif %}
         </li>
-    </ul>
--->
+        <li>
+          {% if not request.user.is_authenticated %}
+          <a class="btn btn-outline-warning" href="{% url 'login' %}">Iniciar Sesion</a>
+          {% endif %}
+        </li>
+        <li>
+          {% if request.user.is_authenticated %}
+          <a class="btn btn-outline-warning" href="{% url 'logout' %}">Desconectarse</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
-

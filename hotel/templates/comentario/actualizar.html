@@ -1,0 +1,27 @@
+{% extends 'principal.html' %}
+
+{% block contenido %}
+  {% load bootstrap5 %}
+  <form action="{% url 'editar_comentario' comentario.id %}" method="post">
+    {% csrf_token %}
+
+    <div class="mb-4">
+      {% bootstrap_field formulario.cliente %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario.habitacion  %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario.puntuacion %}
+    </div>
+    <div class="mb-4">
+      {% bootstrap_field formulario.comentario %}
+    </div>
+    <div class="mb-4">
+      {% bootstrap_field formulario.fecha %}
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'principal.html' %}
+{% block contenido %}
+  <h1>Listado de Reservas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Habitación</th>
+        <th>Fecha de Entrada</th>
+        <th>Fecha de Salida</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reserva in reservas %}
+        <tr>
+          <td>{{ reserva.cliente }}</td>
+          <td>{{ reserva.habitacion }}</td>
+          <td>{{ reserva.fecha_entrada }}</td>
+          <td>{{ reserva.fecha_salida }}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary"><a href="{% url 'editar_reserva' reserva.id %}"><span>EDITAR</span></a></button>
+          </td>
+          <td>
+            <form action = "{% url "reserva_eliminar" reserva.id %}" method = "post"> 
+                {% csrf_token %}
+                <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                    <span>ELIMINAR</span>
+                </button> 
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

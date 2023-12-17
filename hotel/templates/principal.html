@@ -11,11 +11,12 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 </head>
-<body>
+<body >
     {% include "menu/menu.html" %}
-    
-    <img src="{% static  'imagenes/imagen.jpg' %}" alt="Imagen de hotel">
-    
+    <div class="d-flex justify-content-center">
+        <img src="{% static  'imagenes/imagen.jpg' %}" alt="Imagen de hotel">
+    </div>
+    <main class="container">
     {% block cabezera %}
 
 
@@ -26,6 +27,8 @@
 
 
     {% endblock contenido %}
+    </main>
+
 
     {% include "pie_pagina/pie_pagina.html" %}
 

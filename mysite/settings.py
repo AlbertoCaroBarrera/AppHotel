@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'django_bootstrap_icons',
     'debug_toolbar',
+    
 
 ]
 
@@ -133,3 +134,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = ["127.0.0.1"]
+AUTH_USER_MODEL = 'hotel.Usuario'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
