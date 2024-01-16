@@ -20,7 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include("hotel.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
-
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('api/v1/',include("hotel.api_urls"))
 ]
 from django.conf.urls import handler400,handler404,handler403,handler500
 handler404 = "hotel.views.mi_error_400"
