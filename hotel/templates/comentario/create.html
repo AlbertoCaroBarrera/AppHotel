@@ -1,0 +1,30 @@
+{% extends 'principal.html' %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block contenido %}
+  <form action="{% url 'crear_comentario' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_comentario.cliente %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_comentario.habitacion %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_comentario.puntuacion %}
+    </div>
+    <div class="mb-4">
+      {% bootstrap_field formulario_comentario.comentario %}
+    </div>
+    <div class="mb-4">
+      {% bootstrap_field formulario_comentario.fecha %}
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+{% endblock %}

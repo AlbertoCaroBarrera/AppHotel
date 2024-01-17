@@ -1,0 +1,24 @@
+{% extends 'principal.html' %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block contenido %}
+  <form action="{% url 'crear_empleado' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_empleado.usuario %}
+    </div> 
+    
+    <div class="mb-4">
+      {% bootstrap_field formulario_empleado.nombre  %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_empleado.cargo %}
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "principal.html" %}
+
+{% block contenido %}
+
+<h1>Listado de Comentarios</h1>
+
+{% if comentarios %}
+    <ul>
+        {% for comentario in comentarios %}
+            <li>
+                <strong>Cliente:</strong> {{ comentario.cliente.nombre }}<br>
+                <strong>Habitación:</strong> {{ comentario.habitacion.numero_hab }}<br>
+                <strong>Puntuación:</strong> {{ comentario.puntuacion }}<br>
+                <strong>Comentario:</strong> {{ comentario.comentario }}<br>
+                <strong>Fecha:</strong> {{ comentario.fecha|date:"F j, Y H:i:s" }}<br>
+            </li>
+            <button type="button" class="btn btn-outline-primary"><a href="{% url 'editar_comentario' comentario.id %}"><span>EDITAR</span></a></button>
+
+            <form action="{% url 'eliminar_comentario' comentario.id %}" method="post">
+              {% csrf_token %}
+              <button class="btn btn-danger" onclick="return eliminar();" type="submit"><span>ELIMINAR</span></button>
+            </form>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay comentarios disponibles.</p>
+{% endif %}
+
+{% endblock contenido %}

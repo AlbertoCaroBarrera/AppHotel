@@ -1,7 +1,9 @@
+{% extends "principal.html" %}
+
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-
+{% block contenido %}
 <form action="{%url 'habitacion_create'%}" method="POST">
     {%csrf_token%}
     
@@ -37,3 +39,4 @@
         </div>
     <button type="submit">Enviar</button>
 </form>
+{% endblock contenido %}

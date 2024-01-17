@@ -1,0 +1,31 @@
+{% extends "principal.html" %}
+{% load bootstrap5 %}
+
+{%block contenido%}
+{% bootstrap_css %}
+<div class="container">
+<form action="{% url 'reserva_create' %}" method="POST">
+
+    {% csrf_token %}
+    
+    <div class="mb-4">
+        {% bootstrap_field formulario_reserva.cliente %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario_reserva.habitacion %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario_reserva.fecha_entrada %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario_reserva.fecha_salida %}
+    </div>
+
+    <button type="submit">Enviar</button>
+
+</form>
+</div>
+{%endblock%}

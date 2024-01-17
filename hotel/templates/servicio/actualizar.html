@@ -1,0 +1,30 @@
+{% extends 'principal.html' %}
+
+{% block contenido %}
+
+{% load bootstrap5 %}
+<form action = "{% url 'editar_servicio' servicio.id %}" method = "post"> 
+
+    {% csrf_token %} 
+
+    <div class="mb-4">
+        {% bootstrap_field formulario.nombre show_label=True %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario.descripcion show_label=True %}
+    </div>
+
+    <div class="mb-4">
+        {% bootstrap_field formulario.precio show_label=True %}
+    </div>
+    <div class="mb-4">
+        {% bootstrap_field formulario.reserva show_label=True %}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+
+</form> 
+
+
+{% endblock %}

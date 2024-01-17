@@ -1,0 +1,27 @@
+{% extends 'principal.html' %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block contenido %}
+  <form action="{% url 'crear_servicio' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_servicio.nombre %}
+    </div> 
+    
+    <div class="mb-4">
+      {% bootstrap_field formulario_servicio.descripcion  %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_servicio.precio %}
+    </div>
+
+    <div class="mb-4">
+      {% bootstrap_field formulario_servicio.reserva %}
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+{% endblock %}

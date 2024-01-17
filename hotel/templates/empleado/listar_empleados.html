@@ -1,0 +1,16 @@
+{% extends 'principal.html' %}
+<h1>Listado de Empleados</h1>
+{% block contenido %}
+  <ul>
+    {% for empleado in empleados %}
+      <li>{{ empleado.nombre }} - {{ empleado.get_cargo_display }}</li>
+
+      <button type="button" class="btn btn-outline-primary"><a href="{% url 'editar_empleado' empleado.id %}"><span>EDITAR</span></a></button>
+
+      <form action="{% url 'eliminar_empleado' empleado.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" onclick="return eliminar();" type="submit"><span>ELIMINAR</span></button>
+      </form>
+    {% endfor %}
+  </ul>
+{% endblock %}

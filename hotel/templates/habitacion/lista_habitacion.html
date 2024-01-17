@@ -2,7 +2,7 @@
 
 {% block contenido %}
 
-{% for habitacion in habitacion_mostrar %}
+{% for habitacion in habitaciones %}
 
     <ul>
         <li>
@@ -15,6 +15,22 @@
             Precio por noche de la habitacion: {{habitacion.precio_noche}}
         </li>
     </ul>
+    <div class=" btn-group d-flex">
+            <div class="m-2">
+                <button type="button" 
+                        class="btn btn-outline-primary"> 
+                        <a href="{% url 'habitacion_editar' habitacion.id %}" ><span>EDITAR</span></a>
+                </button>
+            </div>
+            <div class="m-2">
+                <form action = "{% url 'habitacion_eliminar' habitacion.id %}" method = "post"> 
+                    {% csrf_token %}
+                    <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                        <span>ELIMINAR</span>
+                    </button> 
+                </form>
+            </div>
+        </div>
 
 {% endfor %}
 

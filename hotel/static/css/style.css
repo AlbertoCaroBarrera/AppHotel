@@ -21,48 +21,6 @@ body {
 }
 
 
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #111317;
-    padding: 2rem 1rem;
-
-}
-
-.links_navagacion {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-}
-
-a {
-    text-decoration: none;
-}
-
-.link a {
-    position: relative;
-    padding-bottom: 0.75rem;
-    color: var(--white);
-}
-
-.link a::after {
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 0;
-    left: 0;
-    bottom: 0;
-    background-color: var(--secondary-color);
-    transition: 0.3s;
-}
-
-
-.link a:hover::after {
-    width: 50%;
-}
-
 
 .pie-pagina{
 
