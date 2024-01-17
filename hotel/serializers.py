@@ -14,9 +14,9 @@ class HabitacionSerializer(serializers.ModelSerializer):
 class ReservaSerializerMejorado(serializers.ModelSerializer):
     cliente = ClienteSerializer()
     habitacion = HabitacionSerializer()
-    fecha_entrada = serializers.DateField(format=('%d-%m-%Y'))
-    fecha_salida = serializers.DateField(format=('%d-%m-%Y'))
-    
+    fecha_entrada = serializers.DateTimeField(format=('%d-%m-%Y %H:%M:%S'))
+    fecha_salida = serializers.DateTimeField(format=('%d-%m-%Y %H:%M:%S'))
+
     class Meta:
         fields = ('cliente','habitacion','fecha_entrada','fecha_salida')
         model = Reserva
