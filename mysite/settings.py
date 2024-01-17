@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     'django_bootstrap_icons',
     'debug_toolbar',
-    
+    'rest_framework',
+
 
 ]
 
