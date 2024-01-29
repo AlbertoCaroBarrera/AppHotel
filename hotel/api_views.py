@@ -23,6 +23,7 @@ def cliente_list(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def cliente_list_mejorado(request):
     clientes = Cliente.objects.all()
     serializer = ClienteSerializerMejorado(clientes, many=True)
