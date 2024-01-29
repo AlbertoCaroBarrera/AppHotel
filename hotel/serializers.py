@@ -3,7 +3,7 @@ from .models import *
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'is_active', 'ROL')
+        fields = '__all__'
         
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,7 +20,7 @@ class ClienteSerializerMejorado(serializers.ModelSerializer):
 class HabitacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habitacion
-        fields = ['numero_hab','precio_noche']
+        fields = '__all__'
         
 class HabitacionSerializerMejorado(serializers.ModelSerializer):
     class Meta:
