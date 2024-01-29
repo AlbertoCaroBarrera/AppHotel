@@ -7,13 +7,43 @@ from .forms import *
 from django.db.models import Q,Prefetch
 
 @api_view(['GET'])
+def usuario_list(request):
+    usuarios = Usuario.objects.all()
+    serializer = UsuarioSerializer(usuarios, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def cliente_list(request):
     clientes = Cliente.objects.all()
     serializer = ClienteSerializer(clientes,many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
+def cliente_list_mejorado(request):
+    clientes = Cliente.objects.all()
+    serializer = ClienteSerializerMejorado(clientes, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def habitacion_list(request):
+    habitaciones = Habitacion.objects.all()
+    serializer = HabitacionSerializer(habitaciones, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def habitacion_list_mejorado(request):
+    habitaciones = Habitacion.objects.all()
+    serializer = HabitacionSerializerMejorado(habitaciones, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def reserva_list(request):
+    reservas = Reserva.objects.all()
+    serializer = ReservaSerializerMejorado(reservas, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def reserva_list_mejorado(request):
     reserva= Reserva.objects.all()
     serializer = ReservaSerializerMejorado(reserva,many=True)
     return Response(serializer.data)
