@@ -33,6 +33,7 @@ def cliente_buscar(request):
 
 @api_view(['GET'])
 def cliente_busqueda_avanzada(request):
+    
 
     if (len(request.query_params)>0):
         formulario = BusquedaAvanzadaClienteForm(request.query_params)
