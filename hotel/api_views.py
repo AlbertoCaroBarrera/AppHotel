@@ -98,3 +98,40 @@ def cliente_busqueda_avanzada(request):
             return Response(formulario.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+def habitacion_busqueda_avanzada(request):
+    
+
+    if (len(request.query_params)>0):
+        formulario = BusquedaAvanzadaHabitacionForm(request.query_params)
+        if formulario.is_valid():
+            mensaje="Se ha buscado por:\n"
+            
+            QShabitacion = Habitacion.objects
+            
+            textoBusqueda=formulario.cleaned_data.get('textoBusqueda')
+            numero_hab=formulario.cleaned_data.get('numero_hab')
+            precio_noche=formulario.cleaned_data.get('precio_noche')
+            if textoBusqueda is not None:
+                QShabitacion = QShabitacion.filter(tipo__contains=textoBusqueda)
+                mensaje+=" Contiene: "+ textoBusqueda+"\n"
+            
+            if numero_hab is not None:
+                QShabitacion = QShabitacion.filter(numero_hab__startswith=numero_hab)
+                mensaje+= str(numero_hab)+"\n"
+                
+            if precio_noche is not None:
+                QShabitacion = QShabitacion.filter(precio_noche__startswith=precio_noche)
+                mensaje+= str(precio_noche)+"\n"
+
+            habitacion = QShabitacion.all()
+            
+            serializer = HabitacionSerializer(habitacion,many=True)
+
+            return Response(serializer.data)
+            
+        else:
+            return Response(formulario.errors, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response({}, status=status.HTTP_400_BAD_REQUEST)
