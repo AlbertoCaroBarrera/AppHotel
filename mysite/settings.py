@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-tnwy74838d@qa!dg#l&6k^@^(xe)ujx==98sw%hc47*bldux_b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com','0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com','0.0.0.0','localhost']
 
 
 # Application definition
@@ -146,8 +146,8 @@ OAUTH2_PROVIDER = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
 
     ),
 

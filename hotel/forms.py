@@ -177,23 +177,23 @@ class ReservaForm(forms.ModelForm):
         return self.cleaned_data
 
 class BusquedaAvanzadaReservaForm(forms.Form):
-    texto_busqueda = forms.CharField(required=False, label='Buscar en cliente y habitación')
-    fecha_entrada_desde = forms.DateField(required=False, label='Fecha de entrada desde')
-    fecha_entrada_hasta = forms.DateField(required=False, label='Fecha de entrada hasta')
+    textoBusqueda = forms.CharField(required=False, label='Buscar en cliente y habitación')
+    fecha_desde = forms.DateField(required=False, label='Fecha de entrada desde')
+    fecha_hasta = forms.DateField(required=False, label='Fecha de entrada hasta')
 
     def clean(self):
         super().clean()
-        texto_busqueda = self.cleaned_data.get('texto_busqueda')
-        fecha_entrada_desde = self.cleaned_data.get('fecha_entrada_desde')
-        fecha_entrada_hasta = self.cleaned_data.get('fecha_entrada_hasta')
+        textoBusqueda = self.cleaned_data.get('textoBusqueda')
+        fecha_desde = self.cleaned_data.get('fecha_desde')
+        fecha_hasta = self.cleaned_data.get('fecha_hasta')
 
-        if not texto_busqueda and not fecha_entrada_desde and not fecha_entrada_hasta:
+        if not textoBusqueda and not fecha_desde and not fecha_hasta:
             self.add_error(None, 'Debe introducir al menos un valor en un campo del formulario')
 
 
-        if fecha_entrada_desde and fecha_entrada_hasta and fecha_entrada_hasta < fecha_entrada_desde:
+        if fecha_desde and fecha_hasta and fecha_hasta < fecha_desde:
             self.add_error('fecha_entrada_desde', 'La fecha hasta no puede ser menor que la fecha desde')
-            self.add_error('fecha_entrada_hasta', 'La fecha hasta no puede ser menor que la fecha desde')
+            self.add_error('fecha_hasta', 'La fecha hasta no puede ser menor que la fecha desde')
 
         return self.cleaned_data
 

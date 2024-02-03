@@ -102,7 +102,6 @@ def cliente_busqueda_avanzada(request):
 @api_view(['GET'])
 def habitacion_busqueda_avanzada(request):
     
-
     if (len(request.query_params)>0):
         formulario = BusquedaAvanzadaHabitacionForm(request.query_params)
         if formulario.is_valid():
@@ -113,6 +112,7 @@ def habitacion_busqueda_avanzada(request):
             textoBusqueda=formulario.cleaned_data.get('textoBusqueda')
             numero_hab=formulario.cleaned_data.get('numero_hab')
             precio_noche=formulario.cleaned_data.get('precio_noche')
+            
             if textoBusqueda is not None:
                 QShabitacion = QShabitacion.filter(tipo__contains=textoBusqueda)
                 mensaje+=" Contiene: "+ textoBusqueda+"\n"
@@ -128,6 +128,49 @@ def habitacion_busqueda_avanzada(request):
             habitacion = QShabitacion.all()
             
             serializer = HabitacionSerializer(habitacion,many=True)
+
+            return Response(serializer.data)
+            
+        else:
+            return Response(formulario.errors, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response({}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET'])
+def reserva_busqueda_avanzada(request):
+    
+    if (len(request.query_params)>0):
+        formulario = BusquedaAvanzadaReservaForm(request.query_params)
+        if formulario.is_valid():
+            mensaje="Se ha buscado por:\n"
+            
+            QSreserva = Reserva.objects
+            
+            textoBusqueda=formulario.cleaned_data.get('textoBusqueda')
+            fecha_desde=formulario.cleaned_data.get('fecha_desde')
+            fecha_hasta=formulario.cleaned_data.get('fecha_hasta')
+            
+            if textoBusqueda is not None:
+                QSreserva = QSreserva.filter(
+                    Q(cliente__nombre__icontains=textoBusqueda) |
+                    Q(habitacion__tipo__icontains=textoBusqueda)
+                )
+                
+                mensaje+=" Contiene: "+ textoBusqueda+"\n"
+            
+            #Comprobamos fechas
+            #Obtenemos los libros con fecha publicacion mayor a la fecha desde
+            if(not fecha_desde is None):
+                QSreserva = QSreserva.filter(fecha_desde__gte=fecha_desde)
+            
+             #Obtenemos los libros con fecha publicacion menor a la fecha desde
+            if(not fecha_hasta is None):
+                QSreserva = QSreserva.filter(fecha_hasta__lte=fecha_hasta)
+
+            reserva = QSreserva.all()
+            
+            serializer = ReservaSerializer(reserva,many=True)
 
             return Response(serializer.data)
             

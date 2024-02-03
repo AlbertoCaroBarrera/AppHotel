@@ -33,6 +33,11 @@ class HabitacionSerializerMejorado(serializers.ModelSerializer):
         model = Habitacion
         fields = ('numero_hab', 'tipo', 'precio_noche')
         
+class ReservaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reserva
+        fields = '__all__'
+        
 class ReservaSerializerMejorado(serializers.ModelSerializer):
     cliente = ClienteSerializerMejorado()
     habitacion = HabitacionSerializerMejorado()
