@@ -44,13 +44,13 @@ def habitacion_list_mejorado(request):
 @api_view(['GET'])
 def reserva_list(request):
     reservas = Reserva.objects.all()
-    serializer = ReservaSerializerMejorado(reservas, many=True)
+    serializer = ReservaSerializer(reservas, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def reserva_list_mejorado(request):
     reserva= Reserva.objects.all()
-    serializer = ReservaSerializerMejorado(reserva,many=True)
+    serializer = ReservaSerializer(reserva,many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -182,13 +182,15 @@ def reserva_busqueda_avanzada(request):
 
 @api_view(['POST'])
 def reserva_create(request):
-    serializers = ReservaSerializerMejorado(data=request.data)
-    if serializers.is_valid():
+    print(request.data)
+    reservaCreateSerializer = ReservaSerializerCreate(data=request.data)
+    if reservaCreateSerializer.is_valid():
         try:
-            serializers.save()
-            return Response("Reserva Creada")
+            reservaCreateSerializer.save()
+            return Response("Reserva CREADA")
+        except serializers.ValidationError as error:
+            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
         except Exception as error:
             return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     else:
-        return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
-    
+        return Response(reservaCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)

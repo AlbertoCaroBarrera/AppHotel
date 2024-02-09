@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import *
 from .forms import *
+from django.utils import timezone
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,34 +40,33 @@ class ReservaSerializer(serializers.ModelSerializer):
         model = Reserva
         fields = '__all__'
         
-class ReservaSerializerMejorado(serializers.ModelSerializer):
-    cliente = ClienteSerializerMejorado()
-    habitacion = HabitacionSerializerMejorado()
+class ReservaSerializerCreate(serializers.ModelSerializer):
     fecha_entrada = serializers.DateTimeField(format=('%d-%m-%Y %H:%M:%S'))
     fecha_salida = serializers.DateTimeField(format=('%d-%m-%Y %H:%M:%S'))
 
     class Meta:
-        fields = ('cliente','habitacion','fecha_entrada','fecha_salida')
         model = Reserva
+        fields = ('cliente','habitacion','fecha_entrada','fecha_salida')
     
-    def validate_fecha_entrada(self,fecha_entrada):
-        fechaHoy = date.today()
-        if fechaHoy >= fecha_entrada:
+    def validate_fecha_entrada(self, fecha_entrada):
+        fecha_actual = timezone.now()
+        if fecha_actual >= fecha_entrada:
             raise serializers.ValidationError('La fecha de entrada debe ser mayor a Hoy')
-            return fecha_entrada
+        return fecha_entrada
         
-    def validate_fecha_salida(self,fecha_salida):
-        fechaHoy = date.today()
-        if fechaHoy >= fecha_salida:
+    def validate_fecha_salida(self, fecha_salida):
+        fecha_actual = timezone.now()
+        if fecha_actual >= fecha_salida:
             raise serializers.ValidationError('La fecha de salida debe ser mayor a Hoy')
-            return fecha_salida
+        return fecha_salida
         
     def validate_cliente(self,cliente):
-        if len(cliente) < 1:
+        if not cliente:
             raise serializers.ValidationError('Debe seleccionar al menos un cliente')
         return cliente
     
     def validate_habitacion(self,habitacion):
-        if len(habitacion) < 1:
+        if not habitacion:
             raise serializers.ValidationError('Debe seleccionar al menos una habitacion')
         return habitacion
+    

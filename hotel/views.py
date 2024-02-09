@@ -370,7 +370,7 @@ def reserva_create(request):
         datosFormulario = request.POST
     
     formulario = ReservaForm(datosFormulario)
-
+    
     
     if (request.method == "POST"):
         reserva_creado = crear_Reserva_modelo(formulario)
