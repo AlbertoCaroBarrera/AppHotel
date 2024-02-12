@@ -7,8 +7,12 @@ from .forms import *
 from django.db.models import Q,Prefetch
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .serializers import FileUploadSerializer
 @api_view(['GET'])
 def usuario_list(request):
     usuarios = Usuario.objects.all()
@@ -182,7 +186,6 @@ def reserva_busqueda_avanzada(request):
 
 @api_view(['POST'])
 def reserva_create(request):
-    print(request.data)
     reservaCreateSerializer = ReservaSerializerCreate(data=request.data)
     if reservaCreateSerializer.is_valid():
         try:
@@ -194,3 +197,199 @@ def reserva_create(request):
             return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     else:
         return Response(reservaCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET']) 
+def reserva_obtener(request,reserva_id):
+    reserva = Reserva.objects.select_related("cliente").select_related("habitacion")
+    reserva = reserva.get(id=reserva_id)
+    serializer =  ReservaSerializer(reserva)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+def reserva_editar(request,reserva_id):
+    reserva = Reserva.objects.get(id=reserva_id)
+    reservaCreateSerializer = ReservaSerializerCreate(data=request.data,instance=reserva)
+    if reservaCreateSerializer.is_valid():
+        try:
+            reservaCreateSerializer.save()
+            return Response("reserva EDITADO")
+        except serializers.ValidationError as error:
+            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(reservaCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['PATCH'])
+def reserva_actualizar_fecha(request,reserva_id):
+    serializers = ReservaSerializerCreate(data=request.data)
+    reserva = Reserva.objects.get(id=reserva_id)
+    serializers = ReservaSerializerActualizarFecha(data=request.data,instance=reserva)
+    if serializers.is_valid():
+        try:
+            serializers.save()
+            return Response("Reserva EDITADO")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['DELETE'])
+def reserva_eliminar(request,reserva_id):
+    reserva = Reserva.objects.get(id=reserva_id)
+    try:
+        reserva.delete()
+        return Response("reserva ELIMINADO")
+    except Exception as error:
+        return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+@api_view(['POST'])
+def cliente_create(request):
+    print(request.data)
+    clienteCreateSerializer = ClienteSerializerCreate(data=request.data)
+    if clienteCreateSerializer.is_valid():
+        try:
+            clienteCreateSerializer.save()
+            return Response("Cliente CREADO")
+        except serializers.ValidationError as error:
+            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as error:
+            return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(clienteCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET']) 
+def cliente_obtener(request,cliente_id):
+    cliente = Cliente.objects
+    cliente = cliente.get(id=cliente_id)
+    serializer =  ClienteSerializer(cliente)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+def cliente_editar(request,cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    clienteCreateSerializer = ClienteSerializerCreate(data=request.data,instance=reseclienterva)
+    if clienteCreateSerializer.is_valid():
+        try:
+            clienteCreateSerializer.save()
+            return Response("cliente EDITADO")
+        except serializers.ValidationError as error:
+            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(clienteCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['PATCH'])
+def cliente_actualizar_nombre(request,cliente_id):
+    serializers = ClienteSerializerCreate(data=request.data)
+    cliente = Cliente.objects.get(id=cliente_id)
+    serializers = ClienteSerializerActualizarNombre(data=request.data,instance=cliente)
+    if serializers.is_valid():
+        try:
+            serializers.save()
+            return Response("cliente EDITADO")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+    
+@api_view(['DELETE'])
+def cliente_eliminar(request,cliente_id):
+    cliente = Cliente.objects.get(id=cliente_id)
+    try:
+        cliente.delete()
+        return Response("cliente ELIMINADO")
+    except Exception as error:
+        return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    
+
+@api_view(['POST'])
+def habitacion_create(request):
+    print(request.data)
+    habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data)
+    if habitacionCreateSerializer.is_valid():
+        try:
+            habitacionCreateSerializer.save()
+            return Response("Cliente CREADO")
+        except serializers.ValidationError as error:
+            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as error:
+            return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET']) 
+def habitacion_obtener(request,habitacion_id):
+    habitacion = Habitacion.objects
+    habitacion = habitacion.get(id=habitacion_id)
+    serializer =  HabitacionSerializer(habitacion)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+def habitacion_editar(request,habitacion_id):
+    habitacion = Habitacion.objects.get(id=habitacion_id)
+    habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data,instance=habitacion)
+    if habitacionCreateSerializer.is_valid():
+        try:
+            habitacionCreateSerializer.save()
+            return Response("habitacion EDITADO")
+        except serializers.ValidationError as error:
+            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['PATCH'])
+def habitacion_actualizar_nombre(request,habitacion_id):
+    serializers = HabitacionSerializerCreate(data=request.data)
+    habitacion = Habitacion.objects.get(id=habitacion_id)
+    serializers = HabitacionSerializerActualizarNombre(data=request.data,instance=habitacion)
+    if serializers.is_valid():
+        try:
+            serializers.save()
+            return Response("Habitacion EDITADO")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['DELETE'])
+def habitacion_eliminar(request,habitacion_id):
+    habitacion = Habitacion.objects.get(id=habitacion_id)
+    try:
+        habitacion.delete()
+        return Response("habitacion ELIMINADO")
+    except Exception as error:
+        return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+
+class FileUploadAPIView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+    serializer_class = FileUploadSerializer
+    
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            # you can access the file like this from serializer
+            # uploaded_file = serializer.validated_data["file"]
+            serializer.save()
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED
+            )
+        
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )

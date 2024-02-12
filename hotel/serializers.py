@@ -70,3 +70,75 @@ class ReservaSerializerCreate(serializers.ModelSerializer):
             raise serializers.ValidationError('Debe seleccionar al menos una habitacion')
         return habitacion
     
+class ReservaSerializerActualizarFecha(serializers.ModelSerializer):
+ 
+    class Meta:
+        model = Reserva
+        fields = ['fecha_entrada']
+    
+    def validate_fecha(self,fecha_entrada):
+        reservaFecha = Reserva.objects.filter(fecha_entrada=fecha_entrada).first()
+        if(not reservaFecha is None and reservaFecha.id != self.instance.id):
+            raise serializers.ValidationError('Ya existe una reserva con ese tipo')
+        return fecha_entrada
+    
+    
+class ClienteSerializerCreate(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ('nombre', 'correo_electronico', 'telefono', 'direccion')
+        
+    def validate_nombre(self, nombre):
+        if not nombre:
+            raise serializers.ValidationError('Debe proporcionar un nombre')
+        return nombre
+    
+    def validate_correo_electronico(self, correo_electronico):
+        if not correo_electronico:
+            raise serializers.ValidationError('Debe proporcionar un correo electrónico')
+        return correo_electronico
+
+
+
+class HabitacionSerializerCreate(serializers.ModelSerializer):
+    class Meta:
+        model = Habitacion
+        fields = ('numero_hab', 'tipo', 'precio_noche')
+        
+    def validate_numero_habitacion(self, numero_hab):
+        if numero_hab>100 or numero_hab<0 or not numero_hab:
+            raise serializers.ValidationError('La habitacion no existe')
+        return numero_hab
+    
+class ClienteSerializerActualizarNombre(serializers.ModelSerializer):
+ 
+    class Meta:
+        model = Cliente
+        fields = ['nombre']
+    
+    def validate_nombre(self,nombre):
+        clientenombre = Cliente.objects.filter(nombre=nombre).first()
+        if(not clientenombre is None and clientenombre.id != self.instance.id):
+            raise serializers.ValidationError('Ya existe un cliente con ese nombre')
+        return nombre
+    
+
+
+class HabitacionSerializerActualizarNombre(serializers.ModelSerializer):
+ 
+    class Meta:
+        model = Habitacion
+        fields = ['tipo']
+    
+    def validate_nombre(self,tipo):
+        habitacionTipo = Habitacion.objects.filter(tipo=tipo).first()
+        if(not habitacionTipo is None and habitacionTipo.id != self.instance.id):
+            raise serializers.ValidationError('Ya existe una habitacion con ese tipo')
+        return tipo
+    
+
+
+class FileUploadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UploadedFile
+        fields = ('file', 'uploaded_on',)

@@ -20,7 +20,7 @@ class Usuario(AbstractUser):
 
 
 class Cliente(models.Model):
-    usuario = models.OneToOneField(Usuario,on_delete=models.CASCADE)
+    usuario = models.OneToOneField(Usuario,on_delete=models.CASCADE, default=2)
     nombre = models.CharField(max_length=200)
     correo_electronico = models.EmailField()
     telefono = models.CharField(max_length=200)
@@ -174,3 +174,12 @@ class Promocion(models.Model):
     usuario = models.ForeignKey(Cliente,related_name="promocion_usuario",on_delete=models.CASCADE)
     descuento = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
     fecha_fin = models.DateField()
+
+# Modelo con archivos
+
+class UploadedFile(models.Model):
+    file = models.FileField()
+    uploaded_on = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.uploaded_on.date()
