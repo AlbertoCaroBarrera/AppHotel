@@ -272,7 +272,7 @@ def cliente_obtener(request,cliente_id):
 @api_view(['PUT'])
 def cliente_editar(request,cliente_id):
     cliente = Cliente.objects.get(id=cliente_id)
-    clienteCreateSerializer = ClienteSerializerCreate(data=request.data,instance=reseclienterva)
+    clienteCreateSerializer = ClienteSerializerCreate(data=request.data,instance=cliente)
     if clienteCreateSerializer.is_valid():
         try:
             clienteCreateSerializer.save()
