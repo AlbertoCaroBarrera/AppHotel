@@ -11,6 +11,8 @@ from rest_framework import status
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.models import Group
+from rest_framework.authentication import SessionAuthentication
 
 from .serializers import FileUploadSerializer
 @api_view(['GET'])
@@ -393,3 +395,48 @@ class FileUploadAPIView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+        
+# views.py
+from rest_framework import generics
+from rest_framework.permissions import AllowAny
+
+class registrar_usuario(generics.CreateAPIView):
+    serializer_class = UsuarioSerializerRegistro
+    permission_classes = [AllowAny]
+    
+    def create(self, request, *args, **kwargs):
+        serializers = UsuarioSerializerRegistro(data=request.data)
+        if serializers.is_valid():
+            try:
+                rol = int(request.data.get('rol'))
+                user = Usuario.objects.create_user(
+                        username = serializers.data.get("username"), 
+                        email = serializers.data.get("email"), 
+                        password = serializers.data.get("password1"),
+                        ROL = rol,
+                        )
+                if(rol == Usuario.CLIENTE):
+                    grupo = Group.objects.get(name='Clientes') 
+                    grupo.user_set.add(user)
+                    cliente = Cliente.objects.create( usuario = user)
+                    cliente.save()
+                elif(rol == Usuario.EMPLEADO):
+                    grupo = Group.objects.get(name='Empleados') 
+                    grupo.user_set.add(user)
+                    empleado = Empleado.objects.create(usuario = user)
+                    empleado.save()
+                usuarioSerializado = UsuarioSerializer(user)
+                return Response(usuarioSerializado.data)
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+from oauth2_provider.models import AccessToken     
+@api_view(['GET'])
+def obtener_usuario_token(request,token):
+    ModeloToken = AccessToken.objects.get(token=token)
+    usuario = Usuario.objects.get(id=ModeloToken.id)
+    serializer = UsuarioSerializer(usuario)
+    return Response(serializer.data)
