@@ -437,6 +437,6 @@ from oauth2_provider.models import AccessToken
 @api_view(['GET'])
 def obtener_usuario_token(request,token):
     ModeloToken = AccessToken.objects.get(token=token)
-    usuario = Usuario.objects.get(id=ModeloToken.id)
+    usuario = Usuario.objects.get(id=ModeloToken.user_id)
     serializer = UsuarioSerializer(usuario)
     return Response(serializer.data)

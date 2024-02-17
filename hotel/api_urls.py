@@ -35,4 +35,6 @@ urlpatterns = [
     path('upload-file/', FileUploadAPIView.as_view(), name='upload-file'),
     
     path('registrar/usuario',registrar_usuario.as_view()),
+    
+    path('usuario/token/<str:token>',obtener_usuario_token),
 ]
