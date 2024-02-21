@@ -316,18 +316,21 @@ def cliente_eliminar(request,cliente_id):
 
 @api_view(['POST'])
 def habitacion_create(request):
-    print(request.data)
-    habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data)
-    if habitacionCreateSerializer.is_valid():
-        try:
-            habitacionCreateSerializer.save()
-            return Response("Cliente CREADO")
-        except serializers.ValidationError as error:
-            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as error:
-            return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if(request.user.has_perm("hotel.add_habitacion")):
+        print(request.data)
+        habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data)
+        if habitacionCreateSerializer.is_valid():
+            try:
+                habitacionCreateSerializer.save()
+                return Response("Cliente CREADO")
+            except serializers.ValidationError as error:
+                return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as error:
+                return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos",status=status.HTTP_401_UNAUTHORIZED)
     
 @api_view(['GET']) 
 def habitacion_obtener(request,habitacion_id):
