@@ -188,18 +188,18 @@ def reserva_busqueda_avanzada(request):
 
 @api_view(['POST'])
 def reserva_create(request):
-    reservaCreateSerializer = ReservaSerializerCreate(data=request.data)
-    if reservaCreateSerializer.is_valid():
-        try:
-            reservaCreateSerializer.save()
-            return Response("Reserva CREADA")
-        except serializers.ValidationError as error:
-            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as error:
-            return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.add_reserva"):
+        serializers = ReservaSerializerCreate(data=request.data)
+        if serializers.is_valid():
+            try:
+                serializers.save()
+                return Response("Reserva CREADA")
+            except Exception as error:
+                return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(reservaCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['GET']) 
 def reserva_obtener(request,reserva_id):
@@ -210,113 +210,135 @@ def reserva_obtener(request,reserva_id):
 
 @api_view(['PUT'])
 def reserva_editar(request,reserva_id):
-    reserva = Reserva.objects.get(id=reserva_id)
-    reservaCreateSerializer = ReservaSerializerCreate(data=request.data,instance=reserva)
-    if reservaCreateSerializer.is_valid():
-        try:
-            reservaCreateSerializer.save()
-            return Response("reserva EDITADO")
-        except serializers.ValidationError as error:
-            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as error:
-            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.change_reserva"):
+        reserva = Reserva.objects.get(id=reserva_id)
+        reservaCreateSerializer = ReservaSerializerCreate(data=request.data,instance=reserva)
+        if reservaCreateSerializer.is_valid():
+            try:
+                reservaCreateSerializer.save()
+                return Response("reserva EDITADO")
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(reservaCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(reservaCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
     
 @api_view(['PATCH'])
 def reserva_actualizar_fecha(request,reserva_id):
-    serializers = ReservaSerializerCreate(data=request.data)
-    reserva = Reserva.objects.get(id=reserva_id)
-    serializers = ReservaSerializerActualizarFecha(data=request.data,instance=reserva)
-    if serializers.is_valid():
-        try:
-            serializers.save()
-            return Response("Reserva EDITADO")
-        except Exception as error:
-            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.change_reserva"):
+        serializers = ReservaSerializerCreate(data=request.data)
+        reserva = Reserva.objects.get(id=reserva_id)
+        serializers = ReservaSerializerActualizarFecha(data=request.data,instance=reserva)
+        if serializers.is_valid():
+            try:
+                serializers.save()
+                return Response("Reserva EDITADO")
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
     
 @api_view(['DELETE'])
 def reserva_eliminar(request,reserva_id):
-    reserva = Reserva.objects.get(id=reserva_id)
-    try:
-        reserva.delete()
-        return Response("reserva ELIMINADO")
-    except Exception as error:
-        return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.delete_reserva"):
+        reserva = Reserva.objects.get(id=reserva_id)
+        try:
+            reserva.delete()
+            return Response("reserva ELIMINADO")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
 
 
 
 @api_view(['POST'])
 def cliente_create(request):
-    print(request.data)
-    clienteCreateSerializer = ClienteSerializerCreate(data=request.data)
-    if clienteCreateSerializer.is_valid():
-        try:
-            clienteCreateSerializer.save()
-            return Response("Cliente CREADO")
-        except serializers.ValidationError as error:
-            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as error:
-            return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.add_cliente"):
+        clienteCreateSerializer = ClienteSerializerCreate(data=request.data)
+        if clienteCreateSerializer.is_valid():
+            try:
+                clienteCreateSerializer.save()
+                return Response("Cliente CREADO")
+            except serializers.ValidationError as error:
+                return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as error:
+                return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(clienteCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(clienteCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
     
 
 @api_view(['GET']) 
 def cliente_obtener(request,cliente_id):
-    cliente = Cliente.objects
-    cliente = cliente.get(id=cliente_id)
-    serializer =  ClienteSerializer(cliente)
-    return Response(serializer.data)
+    if request.user.has_perm("hotel.view_cliente"):
+        cliente = Cliente.objects
+        cliente = cliente.get(id=cliente_id)
+        serializer = ClienteSerializer(cliente)
+        return Response(serializer.data)
+    else:
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
+
+
 
 @api_view(['PUT'])
 def cliente_editar(request,cliente_id):
-    cliente = Cliente.objects.get(id=cliente_id)
-    clienteCreateSerializer = ClienteSerializerCreate(data=request.data,instance=cliente)
-    if clienteCreateSerializer.is_valid():
-        try:
-            clienteCreateSerializer.save()
-            return Response("cliente EDITADO")
-        except serializers.ValidationError as error:
-            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as error:
-            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.change_cliente"):
+        cliente = Cliente.objects.get(id=cliente_id)
+        clienteCreateSerializer = ClienteSerializerCreate(data=request.data, instance=cliente)
+        if clienteCreateSerializer.is_valid():
+            try:
+                clienteCreateSerializer.save()
+                return Response("cliente EDITADO")
+            except serializers.ValidationError as error:
+                return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(clienteCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(clienteCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
 @api_view(['PATCH'])
 def cliente_actualizar_nombre(request,cliente_id):
-    serializers = ClienteSerializerCreate(data=request.data)
-    cliente = Cliente.objects.get(id=cliente_id)
-    serializers = ClienteSerializerActualizarNombre(data=request.data,instance=cliente)
-    if serializers.is_valid():
-        try:
-            serializers.save()
-            return Response("cliente EDITADO")
-        except Exception as error:
-            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.change_cliente"):
+        serializers = ClienteSerializerCreate(data=request.data)
+        cliente = Cliente.objects.get(id=cliente_id)
+        serializers = ClienteSerializerActualizarNombre(data=request.data, instance=cliente)
+        if serializers.is_valid():
+            try:
+                serializers.save()
+                return Response("cliente EDITADO")
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
 
 
 
     
 @api_view(['DELETE'])
 def cliente_eliminar(request,cliente_id):
-    cliente = Cliente.objects.get(id=cliente_id)
-    try:
-        cliente.delete()
-        return Response("cliente ELIMINADO")
-    except Exception as error:
-        return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.delete_cliente"):
+        cliente = Cliente.objects.get(id=cliente_id)
+        try:
+            cliente.delete()
+            return Response("cliente ELIMINADO")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
 
     
 
 @api_view(['POST'])
 def habitacion_create(request):
-    if(request.user.has_perm("hotel.add_habitacion")):
+    if request.user.has_perm("hotel.add_habitacion"):
         print(request.data)
         habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data)
         if habitacionCreateSerializer.is_valid():
@@ -330,52 +352,67 @@ def habitacion_create(request):
         else:
             return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response("No tiene permisos",status=status.HTTP_401_UNAUTHORIZED)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
+
     
 @api_view(['GET']) 
 def habitacion_obtener(request,habitacion_id):
-    habitacion = Habitacion.objects
-    habitacion = habitacion.get(id=habitacion_id)
-    serializer =  HabitacionSerializer(habitacion)
-    return Response(serializer.data)
+    if request.user.has_perm("hotel.view_habitacion"):
+        habitacion = Habitacion.objects
+        habitacion = habitacion.get(id=habitacion_id)
+        serializer = HabitacionSerializer(habitacion)
+        return Response(serializer.data)
+    else:
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['PUT'])
 def habitacion_editar(request,habitacion_id):
-    habitacion = Habitacion.objects.get(id=habitacion_id)
-    habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data,instance=habitacion)
-    if habitacionCreateSerializer.is_valid():
-        try:
-            habitacionCreateSerializer.save()
-            return Response("habitacion EDITADO")
-        except serializers.ValidationError as error:
-            return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as error:
-            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.change_habitacion"):
+        habitacion = Habitacion.objects.get(id=habitacion_id)
+        habitacionCreateSerializer = HabitacionSerializerCreate(data=request.data, instance=habitacion)
+        if habitacionCreateSerializer.is_valid():
+            try:
+                habitacionCreateSerializer.save()
+                return Response("habitacion EDITADO")
+            except serializers.ValidationError as error:
+                return Response(error.detail, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(habitacionCreateSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
+
     
 @api_view(['PATCH'])
 def habitacion_actualizar_nombre(request,habitacion_id):
-    serializers = HabitacionSerializerCreate(data=request.data)
-    habitacion = Habitacion.objects.get(id=habitacion_id)
-    serializers = HabitacionSerializerActualizarNombre(data=request.data,instance=habitacion)
-    if serializers.is_valid():
-        try:
-            serializers.save()
-            return Response("Habitacion EDITADO")
-        except Exception as error:
-            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.change_habitacion"):
+        serializers = HabitacionSerializerCreate(data=request.data)
+        habitacion = Habitacion.objects.get(id=habitacion_id)
+        serializers = HabitacionSerializerActualizarNombre(data=request.data, instance=habitacion)
+        if serializers.is_valid():
+            try:
+                serializers.save()
+                return Response("Habitacion EDITADO")
+            except Exception as error:
+                return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
+
     
 @api_view(['DELETE'])
 def habitacion_eliminar(request,habitacion_id):
-    habitacion = Habitacion.objects.get(id=habitacion_id)
-    try:
-        habitacion.delete()
-        return Response("habitacion ELIMINADO")
-    except Exception as error:
-        return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    if request.user.has_perm("hotel.delete_habitacion"):
+        habitacion = Habitacion.objects.get(id=habitacion_id)
+        try:
+            habitacion.delete()
+            return Response("habitacion ELIMINADO")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)
     
 
 
