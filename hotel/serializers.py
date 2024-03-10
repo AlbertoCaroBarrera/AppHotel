@@ -18,6 +18,11 @@ class HabitacionSerializer(serializers.ModelSerializer):
         model = Habitacion
         fields = '__all__'
         
+class EventoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Evento
+        fields = '__all__'
+        
 class ClienteSerializerMejorado(serializers.ModelSerializer):
     usuario = UsuarioSerializer(read_only=True, many=True)
 
@@ -38,6 +43,11 @@ class HabitacionSerializerMejorado(serializers.ModelSerializer):
 class ReservaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reserva
+        fields = '__all__'
+        
+class ServicioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Servicio
         fields = '__all__'
         
 class ReservaSerializerCreate(serializers.ModelSerializer):
@@ -157,3 +167,13 @@ class UsuarioSerializerRegistro(serializers.Serializer):
         if(not usuario is None):
             raise serializers.ValidationError('Ya existe un usuario con ese nombre')
         return username
+    
+#habitacion favorita
+class HabitacionFavoritaSerializer(serializers.ModelSerializer):
+    cliente = ClienteSerializer()
+    habitacion = HabitacionSerializer()
+    class Meta:
+        model = HabitacionFavorita
+        fields = ('id',
+                  'cliente',
+                  'habitacion')

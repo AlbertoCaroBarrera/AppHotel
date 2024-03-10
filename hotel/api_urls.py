@@ -12,14 +12,22 @@ urlpatterns = [
     path('cliente/eliminar/<int:cliente_id>',cliente_eliminar),
     
     
-    
     path('habitaciones', habitacion_list),
+    path('habitaciones/precio', habitacion_list),
+    path('habitaciones/tipo', habitacion_list2),
+    
     path('habitaciones/mejorado', habitacion_list_mejorado),
     path('habitacion/crear',habitacion_create),
     path('habitacion/<int:habitacion_id>',habitacion_obtener),
     path('habitacion/editar/<int:habitacion_id>',habitacion_editar),
     path('habitacion/actualizar/nombre/<int:habitacion_id>',habitacion_actualizar_nombre),
     path('habitacion/eliminar/<int:habitacion_id>',habitacion_eliminar),
+    path('favoritos/usuario/<int:cliente_id>',favoritos_list),
+    path('favoritos/crear',favorito_crear),
+    path('favoritos/eliminar/<int:favorito_id>',favorito_eliminar),
+    
+    path('eventos/mes', eventos_mes_siguiente),
+    path('servicios', servicio_list),
     
     
     path('reservas', reserva_list),

@@ -6,18 +6,20 @@ from rest_framework import status
 from .forms import *
 from django.db.models import Q,Prefetch
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import Group
 from rest_framework.authentication import SessionAuthentication
-
+from datetime import datetime, timedelta
 from .serializers import FileUploadSerializer
+from rest_framework.permissions import AllowAny
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def usuario_list(request):
-    usuarios = Usuario.objects.all()
+    usuarios = Usuario.objects.prefetch_related("clienteusuario").all()
     serializer = UsuarioSerializer(usuarios, many=True)
     return Response(serializer.data)
 
@@ -37,7 +39,13 @@ def cliente_list_mejorado(request):
 
 @api_view(['GET'])
 def habitacion_list(request):
-    habitaciones = Habitacion.objects.all()
+    habitaciones = Habitacion.objects.order_by('precio_noche')
+    serializer = HabitacionSerializer(habitaciones, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def habitacion_list2(request):
+    habitaciones = Habitacion.objects.order_by('tipo')
     serializer = HabitacionSerializer(habitaciones, many=True)
     return Response(serializer.data)
 
@@ -48,9 +56,23 @@ def habitacion_list_mejorado(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def eventos_mes_siguiente(request):
+    fecha_inicio = datetime.now()
+    fecha_fin = fecha_inicio + timedelta(days=30)
+    eventos = Evento.objects.filter(hora_inicio__gte=fecha_inicio, hora_inicio__lte=fecha_fin)
+    serializer = EventoSerializer(eventos, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def reserva_list(request):
     reservas = Reserva.objects.all()
     serializer = ReservaSerializer(reservas, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def servicio_list(request):
+    servicios = Servicio.objects.all()
+    serializer = ServicioSerializer(servicios, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -459,6 +481,8 @@ class registrar_usuario(generics.CreateAPIView):
                     grupo = Group.objects.get(name='Clientes') 
                     grupo.user_set.add(user)
                     cliente = Cliente.objects.create( usuario = user)
+                    cliente.nombre = user.username
+                    cliente.correo_electronico = user.email
                     cliente.save()
                 elif(rol == Usuario.EMPLEADO):
                     grupo = Group.objects.get(name='Empleados') 
@@ -480,3 +504,34 @@ def obtener_usuario_token(request,token):
     usuario = Usuario.objects.get(id=ModeloToken.user_id)
     serializer = UsuarioSerializer(usuario)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def favoritos_list(request, cliente_id):
+    favoritos = HabitacionFavorita.objects.select_related("cliente").select_related("habitacion").filter(cliente=cliente_id).all()
+    serializer = HabitacionFavoritaSerializer(favoritos, many=True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def favorito_crear(request):
+    serializers = HabitacionFavoritaSerializer(data=request.data)
+    if serializers.is_valid():
+        try:
+            serializers.save()
+            return Response("Favorito agregado")
+        except Exception as error:
+            print(error)
+            return Response(error, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['DELETE'])
+def favorito_eliminar(request,favorito_id):
+    if(request.user.has_perm("restaurante.delete_bebida")):
+        favorito = HabitacionFavorita.objects.get(id=favorito_id)
+        try:
+            favorito.delete()
+            return Response("Favorito eliminado de la lista de favoritos")
+        except Exception as error:
+            return Response(repr(error), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    else:
+        return Response("No tiene permisos", status=status.HTTP_401_UNAUTHORIZED)

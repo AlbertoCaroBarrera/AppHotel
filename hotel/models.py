@@ -17,10 +17,11 @@ class Usuario(AbstractUser):
     ROL = models.PositiveSmallIntegerField(
         choices=ROLES,default=1
     )
+    
 
 
 class Cliente(models.Model):
-    usuario = models.OneToOneField(Usuario,on_delete=models.CASCADE, default=2)
+    usuario = models.OneToOneField(Usuario,on_delete=models.CASCADE, related_name="clienteusuario")
     nombre = models.CharField(max_length=200)
     correo_electronico = models.EmailField()
     telefono = models.CharField(max_length=200)
@@ -36,6 +37,12 @@ class Habitacion(models.Model):
     precio_noche = models.FloatField()
     def __str__(self):
         return self.tipo
+
+        
+#Habitaciones favoritas para los clientes
+class HabitacionFavorita(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True, related_name="HabitacionFavorita")
+    habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
 
 # Creamos una tabla con las reservas de los clientes y las habitaciones que han reservado
 
