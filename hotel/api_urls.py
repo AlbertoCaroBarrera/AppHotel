@@ -10,8 +10,7 @@ urlpatterns = [
     path('cliente/editar/<int:cliente_id>',cliente_editar),
     path('cliente/actualizar/nombre/<int:cliente_id>',cliente_actualizar_nombre),
     path('cliente/eliminar/<int:cliente_id>',cliente_eliminar),
-    
-    
+
     path('habitaciones', habitacion_list),
     path('habitaciones/precio', habitacion_list),
     path('habitaciones/tipo', habitacion_list2),

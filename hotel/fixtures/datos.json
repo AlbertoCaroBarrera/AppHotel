@@ -435,575 +435,647 @@
     "model": "auth.permission",
     "pk": 49,
     "fields": {
-        "name": "Can add servicio",
+        "name": "Can add uploaded file",
         "content_type": 13,
-        "codename": "add_servicio"
+        "codename": "add_uploadedfile"
     }
 },
 {
     "model": "auth.permission",
     "pk": 50,
     "fields": {
-        "name": "Can change servicio",
+        "name": "Can change uploaded file",
         "content_type": 13,
-        "codename": "change_servicio"
+        "codename": "change_uploadedfile"
     }
 },
 {
     "model": "auth.permission",
     "pk": 51,
     "fields": {
-        "name": "Can delete servicio",
+        "name": "Can delete uploaded file",
         "content_type": 13,
-        "codename": "delete_servicio"
+        "codename": "delete_uploadedfile"
     }
 },
 {
     "model": "auth.permission",
     "pk": 52,
     "fields": {
-        "name": "Can view servicio",
+        "name": "Can view uploaded file",
         "content_type": 13,
-        "codename": "view_servicio"
+        "codename": "view_uploadedfile"
     }
 },
 {
     "model": "auth.permission",
     "pk": 53,
     "fields": {
-        "name": "Can add reserva evento",
+        "name": "Can add servicio",
         "content_type": 14,
-        "codename": "add_reservaevento"
+        "codename": "add_servicio"
     }
 },
 {
     "model": "auth.permission",
     "pk": 54,
     "fields": {
-        "name": "Can change reserva evento",
+        "name": "Can change servicio",
         "content_type": 14,
-        "codename": "change_reservaevento"
+        "codename": "change_servicio"
     }
 },
 {
     "model": "auth.permission",
     "pk": 55,
     "fields": {
-        "name": "Can delete reserva evento",
+        "name": "Can delete servicio",
         "content_type": 14,
-        "codename": "delete_reservaevento"
+        "codename": "delete_servicio"
     }
 },
 {
     "model": "auth.permission",
     "pk": 56,
     "fields": {
-        "name": "Can view reserva evento",
+        "name": "Can view servicio",
         "content_type": 14,
-        "codename": "view_reservaevento"
+        "codename": "view_servicio"
     }
 },
 {
     "model": "auth.permission",
     "pk": 57,
     "fields": {
-        "name": "Can add puntuacion",
+        "name": "Can add reserva evento",
         "content_type": 15,
-        "codename": "add_puntuacion"
+        "codename": "add_reservaevento"
     }
 },
 {
     "model": "auth.permission",
     "pk": 58,
     "fields": {
-        "name": "Can change puntuacion",
+        "name": "Can change reserva evento",
         "content_type": 15,
-        "codename": "change_puntuacion"
+        "codename": "change_reservaevento"
     }
 },
 {
     "model": "auth.permission",
     "pk": 59,
     "fields": {
-        "name": "Can delete puntuacion",
+        "name": "Can delete reserva evento",
         "content_type": 15,
-        "codename": "delete_puntuacion"
+        "codename": "delete_reservaevento"
     }
 },
 {
     "model": "auth.permission",
     "pk": 60,
     "fields": {
-        "name": "Can view puntuacion",
+        "name": "Can view reserva evento",
         "content_type": 15,
-        "codename": "view_puntuacion"
+        "codename": "view_reservaevento"
     }
 },
 {
     "model": "auth.permission",
     "pk": 61,
     "fields": {
-        "name": "Can add promocion",
+        "name": "Can add puntuacion",
         "content_type": 16,
-        "codename": "add_promocion"
+        "codename": "add_puntuacion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 62,
     "fields": {
-        "name": "Can change promocion",
+        "name": "Can change puntuacion",
         "content_type": 16,
-        "codename": "change_promocion"
+        "codename": "change_puntuacion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 63,
     "fields": {
-        "name": "Can delete promocion",
+        "name": "Can delete puntuacion",
         "content_type": 16,
-        "codename": "delete_promocion"
+        "codename": "delete_puntuacion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 64,
     "fields": {
-        "name": "Can view promocion",
+        "name": "Can view puntuacion",
         "content_type": 16,
-        "codename": "view_promocion"
+        "codename": "view_puntuacion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 65,
     "fields": {
-        "name": "Can add habitacion comodidad",
+        "name": "Can add promocion",
         "content_type": 17,
-        "codename": "add_habitacioncomodidad"
+        "codename": "add_promocion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 66,
     "fields": {
-        "name": "Can change habitacion comodidad",
+        "name": "Can change promocion",
         "content_type": 17,
-        "codename": "change_habitacioncomodidad"
+        "codename": "change_promocion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 67,
     "fields": {
-        "name": "Can delete habitacion comodidad",
+        "name": "Can delete promocion",
         "content_type": 17,
-        "codename": "delete_habitacioncomodidad"
+        "codename": "delete_promocion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 68,
     "fields": {
-        "name": "Can view habitacion comodidad",
+        "name": "Can view promocion",
         "content_type": 17,
-        "codename": "view_habitacioncomodidad"
+        "codename": "view_promocion"
     }
 },
 {
     "model": "auth.permission",
     "pk": 69,
     "fields": {
-        "name": "Can add estancia",
+        "name": "Can add habitacion favorita",
         "content_type": 18,
-        "codename": "add_estancia"
+        "codename": "add_habitacionfavorita"
     }
 },
 {
     "model": "auth.permission",
     "pk": 70,
     "fields": {
-        "name": "Can change estancia",
+        "name": "Can change habitacion favorita",
         "content_type": 18,
-        "codename": "change_estancia"
+        "codename": "change_habitacionfavorita"
     }
 },
 {
     "model": "auth.permission",
     "pk": 71,
     "fields": {
-        "name": "Can delete estancia",
+        "name": "Can delete habitacion favorita",
         "content_type": 18,
-        "codename": "delete_estancia"
+        "codename": "delete_habitacionfavorita"
     }
 },
 {
     "model": "auth.permission",
     "pk": 72,
     "fields": {
-        "name": "Can view estancia",
+        "name": "Can view habitacion favorita",
         "content_type": 18,
-        "codename": "view_estancia"
+        "codename": "view_habitacionfavorita"
     }
 },
 {
     "model": "auth.permission",
     "pk": 73,
     "fields": {
-        "name": "Can add empleado",
+        "name": "Can add habitacion comodidad",
         "content_type": 19,
-        "codename": "add_empleado"
+        "codename": "add_habitacioncomodidad"
     }
 },
 {
     "model": "auth.permission",
     "pk": 74,
     "fields": {
-        "name": "Can change empleado",
+        "name": "Can change habitacion comodidad",
         "content_type": 19,
-        "codename": "change_empleado"
+        "codename": "change_habitacioncomodidad"
     }
 },
 {
     "model": "auth.permission",
     "pk": 75,
     "fields": {
-        "name": "Can delete empleado",
+        "name": "Can delete habitacion comodidad",
         "content_type": 19,
-        "codename": "delete_empleado"
+        "codename": "delete_habitacioncomodidad"
     }
 },
 {
     "model": "auth.permission",
     "pk": 76,
     "fields": {
-        "name": "Can view empleado",
+        "name": "Can view habitacion comodidad",
         "content_type": 19,
-        "codename": "view_empleado"
+        "codename": "view_habitacioncomodidad"
     }
 },
 {
     "model": "auth.permission",
     "pk": 77,
     "fields": {
-        "name": "Can add cuenta bancaria",
+        "name": "Can add estancia",
         "content_type": 20,
-        "codename": "add_cuentabancaria"
+        "codename": "add_estancia"
     }
 },
 {
     "model": "auth.permission",
     "pk": 78,
     "fields": {
-        "name": "Can change cuenta bancaria",
+        "name": "Can change estancia",
         "content_type": 20,
-        "codename": "change_cuentabancaria"
+        "codename": "change_estancia"
     }
 },
 {
     "model": "auth.permission",
     "pk": 79,
     "fields": {
-        "name": "Can delete cuenta bancaria",
+        "name": "Can delete estancia",
         "content_type": 20,
-        "codename": "delete_cuentabancaria"
+        "codename": "delete_estancia"
     }
 },
 {
     "model": "auth.permission",
     "pk": 80,
     "fields": {
-        "name": "Can view cuenta bancaria",
+        "name": "Can view estancia",
         "content_type": 20,
-        "codename": "view_cuentabancaria"
+        "codename": "view_estancia"
     }
 },
 {
     "model": "auth.permission",
     "pk": 81,
     "fields": {
-        "name": "Can add comentario",
+        "name": "Can add empleado",
         "content_type": 21,
-        "codename": "add_comentario"
+        "codename": "add_empleado"
     }
 },
 {
     "model": "auth.permission",
     "pk": 82,
     "fields": {
-        "name": "Can change comentario",
+        "name": "Can change empleado",
         "content_type": 21,
-        "codename": "change_comentario"
+        "codename": "change_empleado"
     }
 },
 {
     "model": "auth.permission",
     "pk": 83,
     "fields": {
-        "name": "Can delete comentario",
+        "name": "Can delete empleado",
         "content_type": 21,
-        "codename": "delete_comentario"
+        "codename": "delete_empleado"
     }
 },
 {
     "model": "auth.permission",
     "pk": 84,
     "fields": {
-        "name": "Can view comentario",
+        "name": "Can view empleado",
         "content_type": 21,
-        "codename": "view_comentario"
+        "codename": "view_empleado"
     }
 },
 {
     "model": "auth.permission",
     "pk": 85,
     "fields": {
-        "name": "Can add check out",
+        "name": "Can add cuenta bancaria",
         "content_type": 22,
-        "codename": "add_checkout"
+        "codename": "add_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 86,
     "fields": {
-        "name": "Can change check out",
+        "name": "Can change cuenta bancaria",
         "content_type": 22,
-        "codename": "change_checkout"
+        "codename": "change_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 87,
     "fields": {
-        "name": "Can delete check out",
+        "name": "Can delete cuenta bancaria",
         "content_type": 22,
-        "codename": "delete_checkout"
+        "codename": "delete_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 88,
     "fields": {
-        "name": "Can view check out",
+        "name": "Can view cuenta bancaria",
         "content_type": 22,
-        "codename": "view_checkout"
+        "codename": "view_cuentabancaria"
     }
 },
 {
     "model": "auth.permission",
     "pk": 89,
     "fields": {
-        "name": "Can add check in",
+        "name": "Can add comentario",
         "content_type": 23,
-        "codename": "add_checkin"
+        "codename": "add_comentario"
     }
 },
 {
     "model": "auth.permission",
     "pk": 90,
     "fields": {
-        "name": "Can change check in",
+        "name": "Can change comentario",
         "content_type": 23,
-        "codename": "change_checkin"
+        "codename": "change_comentario"
     }
 },
 {
     "model": "auth.permission",
     "pk": 91,
     "fields": {
-        "name": "Can delete check in",
+        "name": "Can delete comentario",
         "content_type": 23,
-        "codename": "delete_checkin"
+        "codename": "delete_comentario"
     }
 },
 {
     "model": "auth.permission",
     "pk": 92,
     "fields": {
-        "name": "Can view check in",
+        "name": "Can view comentario",
         "content_type": 23,
-        "codename": "view_checkin"
+        "codename": "view_comentario"
     }
 },
 {
     "model": "auth.permission",
     "pk": 93,
     "fields": {
-        "name": "Can add application",
+        "name": "Can add check out",
         "content_type": 24,
-        "codename": "add_application"
+        "codename": "add_checkout"
     }
 },
 {
     "model": "auth.permission",
     "pk": 94,
     "fields": {
-        "name": "Can change application",
+        "name": "Can change check out",
         "content_type": 24,
-        "codename": "change_application"
+        "codename": "change_checkout"
     }
 },
 {
     "model": "auth.permission",
     "pk": 95,
     "fields": {
-        "name": "Can delete application",
+        "name": "Can delete check out",
         "content_type": 24,
-        "codename": "delete_application"
+        "codename": "delete_checkout"
     }
 },
 {
     "model": "auth.permission",
     "pk": 96,
     "fields": {
-        "name": "Can view application",
+        "name": "Can view check out",
         "content_type": 24,
-        "codename": "view_application"
+        "codename": "view_checkout"
     }
 },
 {
     "model": "auth.permission",
     "pk": 97,
     "fields": {
-        "name": "Can add access token",
+        "name": "Can add check in",
         "content_type": 25,
-        "codename": "add_accesstoken"
+        "codename": "add_checkin"
     }
 },
 {
     "model": "auth.permission",
     "pk": 98,
     "fields": {
-        "name": "Can change access token",
+        "name": "Can change check in",
         "content_type": 25,
-        "codename": "change_accesstoken"
+        "codename": "change_checkin"
     }
 },
 {
     "model": "auth.permission",
     "pk": 99,
     "fields": {
-        "name": "Can delete access token",
+        "name": "Can delete check in",
         "content_type": 25,
-        "codename": "delete_accesstoken"
+        "codename": "delete_checkin"
     }
 },
 {
     "model": "auth.permission",
     "pk": 100,
     "fields": {
-        "name": "Can view access token",
+        "name": "Can view check in",
         "content_type": 25,
-        "codename": "view_accesstoken"
+        "codename": "view_checkin"
     }
 },
 {
     "model": "auth.permission",
     "pk": 101,
     "fields": {
-        "name": "Can add grant",
+        "name": "Can add application",
         "content_type": 26,
-        "codename": "add_grant"
+        "codename": "add_application"
     }
 },
 {
     "model": "auth.permission",
     "pk": 102,
     "fields": {
-        "name": "Can change grant",
+        "name": "Can change application",
         "content_type": 26,
-        "codename": "change_grant"
+        "codename": "change_application"
     }
 },
 {
     "model": "auth.permission",
     "pk": 103,
     "fields": {
-        "name": "Can delete grant",
+        "name": "Can delete application",
         "content_type": 26,
-        "codename": "delete_grant"
+        "codename": "delete_application"
     }
 },
 {
     "model": "auth.permission",
     "pk": 104,
     "fields": {
-        "name": "Can view grant",
+        "name": "Can view application",
         "content_type": 26,
-        "codename": "view_grant"
+        "codename": "view_application"
     }
 },
 {
     "model": "auth.permission",
     "pk": 105,
     "fields": {
-        "name": "Can add refresh token",
+        "name": "Can add access token",
         "content_type": 27,
-        "codename": "add_refreshtoken"
+        "codename": "add_accesstoken"
     }
 },
 {
     "model": "auth.permission",
     "pk": 106,
     "fields": {
-        "name": "Can change refresh token",
+        "name": "Can change access token",
         "content_type": 27,
-        "codename": "change_refreshtoken"
+        "codename": "change_accesstoken"
     }
 },
 {
     "model": "auth.permission",
     "pk": 107,
     "fields": {
-        "name": "Can delete refresh token",
+        "name": "Can delete access token",
         "content_type": 27,
-        "codename": "delete_refreshtoken"
+        "codename": "delete_accesstoken"
     }
 },
 {
     "model": "auth.permission",
     "pk": 108,
     "fields": {
-        "name": "Can view refresh token",
+        "name": "Can view access token",
         "content_type": 27,
-        "codename": "view_refreshtoken"
+        "codename": "view_accesstoken"
     }
 },
 {
     "model": "auth.permission",
     "pk": 109,
     "fields": {
-        "name": "Can add id token",
+        "name": "Can add grant",
         "content_type": 28,
-        "codename": "add_idtoken"
+        "codename": "add_grant"
     }
 },
 {
     "model": "auth.permission",
     "pk": 110,
     "fields": {
-        "name": "Can change id token",
+        "name": "Can change grant",
         "content_type": 28,
-        "codename": "change_idtoken"
+        "codename": "change_grant"
     }
 },
 {
     "model": "auth.permission",
     "pk": 111,
     "fields": {
-        "name": "Can delete id token",
+        "name": "Can delete grant",
         "content_type": 28,
-        "codename": "delete_idtoken"
+        "codename": "delete_grant"
     }
 },
 {
     "model": "auth.permission",
     "pk": 112,
     "fields": {
-        "name": "Can view id token",
+        "name": "Can view grant",
         "content_type": 28,
+        "codename": "view_grant"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 113,
+    "fields": {
+        "name": "Can add refresh token",
+        "content_type": 29,
+        "codename": "add_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 114,
+    "fields": {
+        "name": "Can change refresh token",
+        "content_type": 29,
+        "codename": "change_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 115,
+    "fields": {
+        "name": "Can delete refresh token",
+        "content_type": 29,
+        "codename": "delete_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 116,
+    "fields": {
+        "name": "Can view refresh token",
+        "content_type": 29,
+        "codename": "view_refreshtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 117,
+    "fields": {
+        "name": "Can add id token",
+        "content_type": 30,
+        "codename": "add_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 118,
+    "fields": {
+        "name": "Can change id token",
+        "content_type": 30,
+        "codename": "change_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 119,
+    "fields": {
+        "name": "Can delete id token",
+        "content_type": 30,
+        "codename": "delete_idtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 120,
+    "fields": {
+        "name": "Can view id token",
+        "content_type": 30,
         "codename": "view_idtoken"
     }
 },
@@ -1108,7 +1180,7 @@
     "pk": 13,
     "fields": {
         "app_label": "hotel",
-        "model": "servicio"
+        "model": "uploadedfile"
     }
 },
 {
@@ -1116,7 +1188,7 @@
     "pk": 14,
     "fields": {
         "app_label": "hotel",
-        "model": "reservaevento"
+        "model": "servicio"
     }
 },
 {
@@ -1124,7 +1196,7 @@
     "pk": 15,
     "fields": {
         "app_label": "hotel",
-        "model": "puntuacion"
+        "model": "reservaevento"
     }
 },
 {
@@ -1132,7 +1204,7 @@
     "pk": 16,
     "fields": {
         "app_label": "hotel",
-        "model": "promocion"
+        "model": "puntuacion"
     }
 },
 {
@@ -1140,7 +1212,7 @@
     "pk": 17,
     "fields": {
         "app_label": "hotel",
-        "model": "habitacioncomodidad"
+        "model": "promocion"
     }
 },
 {
@@ -1148,7 +1220,7 @@
     "pk": 18,
     "fields": {
         "app_label": "hotel",
-        "model": "estancia"
+        "model": "habitacionfavorita"
     }
 },
 {
@@ -1156,7 +1228,7 @@
     "pk": 19,
     "fields": {
         "app_label": "hotel",
-        "model": "empleado"
+        "model": "habitacioncomodidad"
     }
 },
 {
@@ -1164,7 +1236,7 @@
     "pk": 20,
     "fields": {
         "app_label": "hotel",
-        "model": "cuentabancaria"
+        "model": "estancia"
     }
 },
 {
@@ -1172,7 +1244,7 @@
     "pk": 21,
     "fields": {
         "app_label": "hotel",
-        "model": "comentario"
+        "model": "empleado"
     }
 },
 {
@@ -1180,7 +1252,7 @@
     "pk": 22,
     "fields": {
         "app_label": "hotel",
-        "model": "checkout"
+        "model": "cuentabancaria"
     }
 },
 {
@@ -1188,23 +1260,23 @@
     "pk": 23,
     "fields": {
         "app_label": "hotel",
-        "model": "checkin"
+        "model": "comentario"
     }
 },
 {
     "model": "contenttypes.contenttype",
     "pk": 24,
     "fields": {
-        "app_label": "oauth2_provider",
-        "model": "application"
+        "app_label": "hotel",
+        "model": "checkout"
     }
 },
 {
     "model": "contenttypes.contenttype",
     "pk": 25,
     "fields": {
-        "app_label": "oauth2_provider",
-        "model": "accesstoken"
+        "app_label": "hotel",
+        "model": "checkin"
     }
 },
 {
@@ -1212,7 +1284,7 @@
     "pk": 26,
     "fields": {
         "app_label": "oauth2_provider",
-        "model": "grant"
+        "model": "application"
     }
 },
 {
@@ -1220,7 +1292,7 @@
     "pk": 27,
     "fields": {
         "app_label": "oauth2_provider",
-        "model": "refreshtoken"
+        "model": "accesstoken"
     }
 },
 {
@@ -1228,40 +1300,40 @@
     "pk": 28,
     "fields": {
         "app_label": "oauth2_provider",
+        "model": "grant"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 29,
+    "fields": {
+        "app_label": "oauth2_provider",
+        "model": "refreshtoken"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 30,
+    "fields": {
+        "app_label": "oauth2_provider",
         "model": "idtoken"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "9gce2qbc82hq71z8fr2rhf310k2pbxq3",
-    "fields": {
-        "session_data": "eyJmZWNoYV9pbmljaW8iOiIyOC8wMS8yMDI0IDE2OjIwIn0:1rU6xS:HwsouEUOOgzVyDGmrRNQXzQyYa7_BnZudD9EUywigwI",
-        "expire_date": "2024-02-11T15:20:30.168Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "cr4lo7dxcv1d9ys01qoyw6ait6k7djbn",
-    "fields": {
-        "session_data": "eyJmZWNoYV9pbmljaW8iOiIyMi8wMS8yMDI0IDEzOjU3In0:1rRts4:Omny7yY6M0aN5Bqo30fi644y5LnXTIArHKqf1mM0tc0",
-        "expire_date": "2024-02-05T12:57:48.232Z"
     }
 },
 {
     "model": "hotel.usuario",
     "pk": 1,
     "fields": {
-        "password": "hashed_password_here",
-        "last_login": "2023-10-15T08:22:10Z",
-        "is_superuser": false,
-        "username": "john_doe",
-        "first_name": "John",
-        "last_name": "Doe",
-        "email": "john.doe@example.com",
-        "is_staff": false,
+        "password": "Week go represent peace. Again will your either us.",
+        "last_login": "1982-03-04T08:51:40.289Z",
+        "is_superuser": true,
+        "username": "annettefrazier",
+        "first_name": "Paula",
+        "last_name": "Russo",
+        "email": "alanwalsh@example.org",
+        "is_staff": true,
         "is_active": true,
-        "date_joined": "2024-01-29T14:30:00Z",
-        "ROL": 1,
+        "date_joined": "2024-03-10T20:01:48.496Z",
+        "ROL": 2,
         "groups": [],
         "user_permissions": []
     }
@@ -1270,16 +1342,16 @@
     "model": "hotel.usuario",
     "pk": 2,
     "fields": {
-        "password": "hashed_password_here",
-        "last_login": "2023-12-05T18:45:32Z",
-        "is_superuser": true,
-        "username": "jane_smith",
-        "first_name": "Jane",
-        "last_name": "Smith",
-        "email": "jane.smith@example.com",
-        "is_staff": true,
+        "password": "Trade hot there school common trip may. Food interview spring weight.\nAbove father city. Street today catch important.",
+        "last_login": "1994-04-18T10:54:46.582Z",
+        "is_superuser": false,
+        "username": "wwillis",
+        "first_name": "Ashley",
+        "last_name": "Miller",
+        "email": "tammy.hodge@example.com",
+        "is_staff": false,
         "is_active": true,
-        "date_joined": "2024-01-29T15:45:00Z",
+        "date_joined": "2024-03-10T20:01:48.496Z",
         "ROL": 2,
         "groups": [],
         "user_permissions": []
@@ -1289,55 +1361,17 @@
     "model": "hotel.usuario",
     "pk": 3,
     "fields": {
-        "password": "hashed_password_here",
-        "last_login": "2023-09-20T12:10:45Z",
+        "password": "Yes list trial put style teach several. Green threat history whose national image.",
+        "last_login": "1980-08-30T19:02:57.420Z",
         "is_superuser": false,
-        "username": "michael_jones",
-        "first_name": "Michael",
-        "last_name": "Jones",
-        "email": "michael.jones@example.com",
-        "is_staff": false,
+        "username": "snydererin",
+        "first_name": "Ashley",
+        "last_name": "Golden",
+        "email": "oliver.wallace@example.com",
+        "is_staff": true,
         "is_active": true,
-        "date_joined": "2024-01-29T13:15:00Z",
-        "ROL": 1,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "hotel.usuario",
-    "pk": 4,
-    "fields": {
-        "password": "hashed_password_here",
-        "last_login": "2023-11-08T21:05:18Z",
-        "is_superuser": true,
-        "username": "emily_wilson",
-        "first_name": "Emily",
-        "last_name": "Wilson",
-        "email": "emily.wilson@example.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2024-01-29T16:00:00Z",
-        "ROL": 1,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "hotel.usuario",
-    "pk": 5,
-    "fields": {
-        "password": "hashed_password_here",
-        "last_login": "2023-07-12T09:30:22Z",
-        "is_superuser": false,
-        "username": "david_clark",
-        "first_name": "David",
-        "last_name": "Clark",
-        "email": "david.clark@example.com",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2024-01-29T14:00:00Z",
-        "ROL": 1,
+        "date_joined": "2024-03-10T20:01:48.496Z",
+        "ROL": 2,
         "groups": [],
         "user_permissions": []
     }
@@ -1347,595 +1381,369 @@
     "model": "hotel.cliente",
     "pk": 1,
     "fields": {
-        "usuario": 1,
-        "nombre": "Alice Johnson",
-        "correo_electronico": "alice.johnson@example.org",
-        "telefono": "+1 (555) 123-4567",
-        "direccion": "123 Main St, Cityville, Country"
-    }
-},
-{
-    "model": "hotel.cliente",
-    "pk": 2,
-    "fields": {
-        "usuario": 4,
-        "nombre": "Robert Davis",
-        "correo_electronico": "robert.davis@example.org",
-        "telefono": "+1 (555) 987-6543",
-        "direccion": "456 Oak Ave, Townsville, Country"
-    }
-},
-{
-    "model": "hotel.cliente",
-    "pk": 3,
-    "fields": {
         "usuario": 2,
-        "nombre": "Amy Cox",
-        "correo_electronico": "amy.cox@example.com",
+        "nombre": "Kyle Anderson",
+        "correo_electronico": "kyle.anderson@example.com",
         "telefono": "+1 (555) 234-5678",
-        "direccion": "789 Pine Rd, Villagetown, Country"
+        "direccion": "789 Oak Street, Anytown, USA"
     }
 },
 {
     "model": "hotel.cliente",
-    "pk": 4,
-    "fields": {
-        "usuario": 5,
-        "nombre": "Karen Johnson",
-        "correo_electronico": "karen.johnson@example.com",
-        "telefono": "+1 (555) 876-5432",
-        "direccion": "101 Cedar Ln, Hamletville, Country"
-    }
-},
-{
-    "model": "hotel.cliente",
-    "pk": 5,
-    "fields": {
-        "usuario": 3,
-        "nombre": "Nathan Sexton",
-        "correo_electronico": "nathan.sexton@example.net",
-        "telefono": "+1 (555) 345-6789",
-        "direccion": "202 Elm St, Villageville, Country"
-    }
-}
-,
-{
-    "model": "hotel.habitacion",
-    "pk": 1,
-    "fields": {
-        "numero_hab": 101,
-        "tipo": "Standard Double Room",
-        "precio_noche": 120.00
-    }
-},
-{
-    "model": "hotel.habitacion",
     "pk": 2,
-    "fields": {
-        "numero_hab": 202,
-        "tipo": "Deluxe Suite",
-        "precio_noche": 250.00
-    }
-},
-{
-    "model": "hotel.habitacion",
-    "pk": 3,
-    "fields": {
-        "numero_hab": 303,
-        "tipo": "Family Suite",
-        "precio_noche": 300.00
-    }
-},
-{
-    "model": "hotel.habitacion",
-    "pk": 4,
-    "fields": {
-        "numero_hab": 404,
-        "tipo": "Single Room",
-        "precio_noche": 80.00
-    }
-},
-{
-    "model": "hotel.habitacion",
-    "pk": 5,
-    "fields": {
-        "numero_hab": 505,
-        "tipo": "Executive Suite",
-        "precio_noche": 350.00
-    }
-}
-,
-{
-    "model": "hotel.reserva",
-    "pk": 1,
-    "fields": {
-        "cliente": 2,
-        "habitacion": 5,
-        "fecha_entrada": "2024-02-10T15:00:00Z",
-        "fecha_salida": "2024-02-15T10:00:00Z"
-    }
-},
-{
-    "model": "hotel.reserva",
-    "pk": 2,
-    "fields": {
-        "cliente": 1,
-        "habitacion": 1,
-        "fecha_entrada": "2024-03-05T14:00:00Z",
-        "fecha_salida": "2024-03-10T11:00:00Z"
-    }
-},
-{
-    "model": "hotel.reserva",
-    "pk": 3,
-    "fields": {
-        "cliente": 1,
-        "habitacion": 4,
-        "fecha_entrada": "2024-04-20T16:00:00Z",
-        "fecha_salida": "2024-04-25T12:00:00Z"
-    }
-},
-{
-    "model": "hotel.reserva",
-    "pk": 4,
-    "fields": {
-        "cliente": 3,
-        "habitacion": 2,
-        "fecha_entrada": "2024-05-15T13:00:00Z",
-        "fecha_salida": "2024-05-20T10:30:00Z"
-    }
-},
-{
-    "model": "hotel.reserva",
-    "pk": 5,
-    "fields": {
-        "cliente": 5,
-        "habitacion": 3,
-        "fecha_entrada": "2024-06-08T14:30:00Z",
-        "fecha_salida": "2024-06-15T11:00:00Z"
-    }
-}
-,
-{
-    "model": "hotel.estancia",
-    "pk": 1,
-    "fields": {
-        "reserva": 2,
-        "fecha_llegada": "2024-02-10T15:00:00Z",
-        "fecha_salida": "2024-02-15T10:00:00Z"
-    }
-},
-{
-    "model": "hotel.estancia",
-    "pk": 2,
-    "fields": {
-        "reserva": 1,
-        "fecha_llegada": "2024-03-05T14:00:00Z",
-        "fecha_salida": "2024-03-10T11:00:00Z"
-    }
-},
-{
-    "model": "hotel.estancia",
-    "pk": 3,
-    "fields": {
-        "reserva": 5,
-        "fecha_llegada": "2024-04-20T16:00:00Z",
-        "fecha_salida": "2024-04-25T12:00:00Z"
-    }
-},
-{
-    "model": "hotel.estancia",
-    "pk": 4,
-    "fields": {
-        "reserva": 3,
-        "fecha_llegada": "2024-05-15T13:00:00Z",
-        "fecha_salida": "2024-05-20T10:30:00Z"
-    }
-},
-{
-    "model": "hotel.estancia",
-    "pk": 5,
-    "fields": {
-        "reserva": 4,
-        "fecha_llegada": "2024-06-08T14:30:00Z",
-        "fecha_salida": "2024-06-15T11:00:00Z"
-    }
-}
-,
-{
-    "model": "hotel.servicio",
-    "pk": 1,
-    "fields": {
-        "nombre": "Aparición correcta del proceso de la persona.",
-        "descripcion": "Utilice una taza de madre en la actividad de la tarea, así como un desafío. Estructura completa a través de la respuesta física suficiente. El nombre del personal más allá. Ya sea que los busques a lo largo del plan.",
-        "precio": 12.50
-    }
-},
-{
-    "model": "hotel.servicio",
-    "pk": 2,
-    "fields": {
-        "nombre": "Personaje ahora tipo perro oficina puede naturaleza.",
-        "descripcion": "Nueva caída tradicional aviso. Gobierno de interés simple sin perder las pruebas del comercio cercano. Estructura a pesar de que la economía probablemente esté en la imagen. Guardar relación de TV necesaria.",
-        "precio": 25.99
-    }
-},
-{
-    "model": "hotel.servicio",
-    "pk": 3,
-    "fields": {
-        "nombre": "Región del pueblo interesante ahora niño hace dos.",
-        "descripcion": "Todo se convierte en una gran diferencia por sí misma, la estrella. Agente de respuesta rápida ayuda dura. Para esperar que suba la mayoría de nosotros.",
-        "precio": 21.50
-    }
-},
-{
-    "model": "hotel.servicio",
-    "pk": 4,
-    "fields": {
-        "nombre": "Producto esta noche ninguno golpea la pierna del sistema de hecho toma. Oficina otra sonrisa de la esposa viaje cultural.",
-        "descripcion": "Ten cuidado con la canción, el conocimiento final construye el crimen. Acuerdo de borde hoy genial.",
-        "precio": 6.99
-    }
-},
-{
-    "model": "hotel.servicio",
-    "pk": 5,
-    "fields": {
-        "nombre": "Ambos empleados desarrollan término de cien. El profesor afecta la educación de los padres recientemente, la razón de la casa. Representa otro factor de consumidor de campo completo.",
-        "descripcion": "Calidad esposa trato del artista ella misma habla. Aunque represente un último general. Onto realmente existen muchos civiles. Tratamiento del campo de la identidad económica.",
-        "precio": 20.99
-    }
-}
-,
-{
-    "model": "hotel.reservaservicio",
-    "pk": 1,
-    "fields": {
-        "reserva": 5,
-        "servicio": 1,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 2,
-    "fields": {
-        "reserva": 3,
-        "servicio": 2,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 3,
-    "fields": {
-        "reserva": 4,
-        "servicio": 3,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 4,
-    "fields": {
-        "reserva": 1,
-        "servicio": 3,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 5,
-    "fields": {
-        "reserva": 3,
-        "servicio": 4,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 6,
-    "fields": {
-        "reserva": 2,
-        "servicio": 4,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 7,
-    "fields": {
-        "reserva": 3,
-        "servicio": 5,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 8,
-    "fields": {
-        "reserva": 2,
-        "servicio": 5,
-        "cantidad": null
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 9,
-    "fields": {
-        "reserva": 3,
-        "servicio": 2,
-        "cantidad": -28160
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 10,
-    "fields": {
-        "reserva": 3,
-        "servicio": 4,
-        "cantidad": -9935
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 11,
-    "fields": {
-        "reserva": 3,
-        "servicio": 1,
-        "cantidad": -16335
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 12,
-    "fields": {
-        "reserva": 2,
-        "servicio": 1,
-        "cantidad": 7363
-    }
-},
-{
-    "model": "hotel.reservaservicio",
-    "pk": 13,
-    "fields": {
-        "reserva": 1,
-        "servicio": 3,
-        "cantidad": 25672
-    }
-}
-,
-{
-    "model": "hotel.empleado",
-    "pk": 1,
     "fields": {
         "usuario": 1,
-        "nombre": "Él proporciona recursos para la temporada. Involucra compartir el comportamiento del próximo automóvil. Parte del niño. Sobre la noche de diferencia. La Sra. millones de preocupaciones pasadas planean rápidamente. Entre cuatro bajos públicos admiten a quién.",
-        "cargo": "Recepcionista"
+        "nombre": "Tammy Hodge",
+        "correo_electronico": "tammy.hodge@example.com",
+        "telefono": "+1 (555) 876-5432",
+        "direccion": "456 Pine Street, Anytown, USA"
     }
 },
 {
-    "model": "hotel.empleado",
-    "pk": 2,
-    "fields": {
-        "usuario": 2,
-        "nombre": "Deje que exista todo el trabajador de la cabeza. Desarrollar no especial decir. Así representa menos debate de agua. Respuesta de cocina de mayo sin permitir a los padres simples.",
-        "cargo": "Recepcionista"
-    }
-},
-{
-    "model": "hotel.empleado",
+    "model": "hotel.cliente",
     "pk": 3,
-    "fields": {
-        "usuario": 4,
-        "nombre": "Nombre del jugador disponible. Paz de color tierra. Oficial fuerte desde feliz.",
-        "cargo": "Recepcionista"
-    }
-},
-{
-    "model": "hotel.empleado",
-    "pk": 4,
-    "fields": {
-        "usuario": 5,
-        "nombre": "Responder a alguien que produce un deseo de casa simple. Descubre la oportunidad lista de la niña. Tardía historia de agua realmente armada.",
-        "cargo": "Recepcionista"
-    }
-},
-{
-    "model": "hotel.empleado",
-    "pk": 5,
     "fields": {
         "usuario": 3,
-        "nombre": "Candidato de alimentos serios. Elección final en explicar la energía comercial. Entrenador otro costo que del sur. Hora de teoría segura.",
-        "cargo": "Recepcionista"
+        "nombre": "Oliver Wallace",
+        "correo_electronico": "oliver.wallace@example.com",
+        "telefono": "+1 (555) 987-6543",
+        "direccion": "123 Maple Street, Anytown, USA"
+    }
+}
+,
+{
+    "model": "hotel.habitacion",
+    "pk": 1,
+    "fields": {
+        "numero_hab": 1,
+        "tipo": "Pequeño",
+        "precio_noche": 50
     }
 },
+{
+    "model": "hotel.habitacion",
+    "pk": 2,
+    "fields": {
+        "numero_hab": 2,
+        "tipo": "Mediano",
+        "precio_noche": 75
+    }
+},
+{
+    "model": "hotel.habitacion",
+    "pk": 3,
+    "fields": {
+        "numero_hab": 3,
+        "tipo": "Grande",
+        "precio_noche": 100
+    }
+}
+,
+{
+    "model": "hotel.habitacionfavorita",
+    "pk": 1,
+    "fields": {
+        "cliente": 1,
+        "habitacion": 1
+    }
+},
+{
+    "model": "hotel.habitacionfavorita",
+    "pk": 2,
+    "fields": {
+        "cliente": 2,
+        "habitacion": 2
+    }
+},
+{
+    "model": "hotel.habitacionfavorita",
+    "pk": 3,
+    "fields": {
+        "cliente": 2,
+        "habitacion": 2
+    }
+},
+{
+    "model": "hotel.reserva",
+    "pk": 1,
+    "fields": {
+        "cliente": 2,
+        "habitacion": 2,
+        "fecha_entrada": "2024-03-10T20:01:48.497Z",
+        "fecha_salida": "2024-03-10T20:01:48.497Z"
+    }
+},
+{
+    "model": "hotel.reserva",
+    "pk": 2,
+    "fields": {
+        "cliente": 2,
+        "habitacion": 2,
+        "fecha_entrada": "2024-03-10T20:01:48.497Z",
+        "fecha_salida": "2024-03-10T20:01:48.497Z"
+    }
+},
+{
+    "model": "hotel.reserva",
+    "pk": 3,
+    "fields": {
+        "cliente": 1,
+        "habitacion": 2,
+        "fecha_entrada": "2024-03-10T20:01:48.497Z",
+        "fecha_salida": "2024-03-10T20:01:48.497Z"
+    }
+},
+{
+    "model": "hotel.estancia",
+    "pk": 1,
+    "fields": {
+        "reserva": 3,
+        "fecha_llegada": "2024-03-10T20:01:48.497Z",
+        "fecha_salida": "2024-03-10T20:01:48.497Z"
+    }
+},
+{
+    "model": "hotel.estancia",
+    "pk": 2,
+    "fields": {
+        "reserva": 2,
+        "fecha_llegada": "2024-03-10T20:01:48.497Z",
+        "fecha_salida": "2024-03-10T20:01:48.497Z"
+    }
+},
+{
+    "model": "hotel.estancia",
+    "pk": 3,
+    "fields": {
+        "reserva": 1,
+        "fecha_llegada": "2024-03-10T20:01:48.497Z",
+        "fecha_salida": "2024-03-10T20:01:48.497Z"
+    }
+},
+
+    {
+        "model": "hotel.servicio",
+        "pk": 1,
+        "fields": {
+            "nombre": "Desayuno",
+            "descripcion": "Disfruta de un delicioso desayuno buffet con una amplia variedad de opciones, desde frutas frescas hasta pan recién horneado y huevos preparados a tu gusto.",
+            "precio": 8.29
+        }
+    },
+    {
+        "model": "hotel.servicio",
+        "pk": 2,
+        "fields": {
+            "nombre": "Almuerzo",
+            "descripcion": "Deléitate con un almuerzo gourmet que combina ingredientes frescos y sabores únicos. Nuestros chefs te sorprenderán con exquisitas creaciones culinarias.",
+            "precio": 6.78
+        }
+    },
+    {
+        "model": "hotel.servicio",
+        "pk": 3,
+        "fields": {
+            "nombre": "Cena",
+            "descripcion": "Disfruta de una cena elegante y sofisticada en nuestro restaurante de primera clase. Déjate llevar por la magia de la gastronomía gourmet en un ambiente exclusivo.",
+            "precio": 9.15
+        }
+    }
+
+,
+{
+    "model": "hotel.reservaservicio",
+    "pk": 1,
+    "fields": {
+        "reserva": 1,
+        "servicio": 1,
+        "cantidad": null
+    }
+},
+{
+    "model": "hotel.reservaservicio",
+    "pk": 2,
+    "fields": {
+        "reserva": 3,
+        "servicio": 1,
+        "cantidad": null
+    }
+},
+{
+    "model": "hotel.reservaservicio",
+    "pk": 3,
+    "fields": {
+        "reserva": 1,
+        "servicio": 2,
+        "cantidad": null
+    }
+},
+{
+    "model": "hotel.reservaservicio",
+    "pk": 4,
+    "fields": {
+        "reserva": 3,
+        "servicio": 3,
+        "cantidad": null
+    }
+},
+{
+    "model": "hotel.reservaservicio",
+    "pk": 5,
+    "fields": {
+        "reserva": 3,
+        "servicio": 1,
+        "cantidad": 6514
+    }
+},
+{
+    "model": "hotel.reservaservicio",
+    "pk": 6,
+    "fields": {
+        "reserva": 1,
+        "servicio": 3,
+        "cantidad": 28318
+    }
+},
+{
+    "model": "hotel.reservaservicio",
+    "pk": 7,
+    "fields": {
+        "reserva": 2,
+        "servicio": 2,
+        "cantidad": 19190
+    }
+},
+
+    {
+        "model": "hotel.empleado",
+        "pk": 1,
+        "fields": {
+            "usuario": 2,
+            "nombre": "Juan",
+            "cargo": "Botones"
+        }
+    },
+    {
+        "model": "hotel.empleado",
+        "pk": 2,
+        "fields": {
+            "usuario": 1,
+            "nombre": "Pedro",
+            "cargo": "Botones"
+        }
+    },
+    {
+        "model": "hotel.empleado",
+        "pk": 3,
+        "fields": {
+            "usuario": 3,
+            "nombre": "Roberto",
+            "cargo": "Botones"
+        }
+    }
+
+,
 {
     "model": "hotel.checkin",
     "pk": 1,
     "fields": {
-        "estancia": 5,
-        "empleado": 4,
-        "fecha_hora_check_in": "2024-01-29T18:58:44.960Z"
-    }
-},
-{
-    "model": "hotel.checkin",
-    "pk": 2,
-    "fields": {
-        "estancia": 2,
-        "empleado": 3,
-        "fecha_hora_check_in": "2024-01-29T18:58:44.960Z"
-    }
-},
-{
-    "model": "hotel.checkin",
-    "pk": 3,
-    "fields": {
-        "estancia": 1,
-        "empleado": 3,
-        "fecha_hora_check_in": "2024-01-29T18:58:44.960Z"
-    }
-},
-{
-    "model": "hotel.checkin",
-    "pk": 4,
-    "fields": {
         "estancia": 3,
-        "empleado": 3,
-        "fecha_hora_check_in": "2024-01-29T18:58:44.960Z"
-    }
-},
-{
-    "model": "hotel.checkin",
-    "pk": 5,
-    "fields": {
-        "estancia": 4,
         "empleado": 2,
-        "fecha_hora_check_in": "2024-01-29T18:58:44.960Z"
-    }
-}
-,
-{
-    "model": "hotel.checkout",
-    "pk": 1,
-    "fields": {
-        "estancia": 3,
-        "empleado": 4,
-        "fecha_hora_check_out": "2024-01-29T18:58:44.960Z"
+        "fecha_hora_check_in": "2024-03-10T20:01:48.497Z"
     }
 },
 {
-    "model": "hotel.checkout",
+    "model": "hotel.checkin",
     "pk": 2,
     "fields": {
-        "estancia": 4,
-        "empleado": 1,
-        "fecha_hora_check_out": "2024-01-29T18:58:44.960Z"
+        "estancia": 2,
+        "empleado": 3,
+        "fecha_hora_check_in": "2024-03-10T20:01:48.497Z"
     }
 },
 {
-    "model": "hotel.checkout",
+    "model": "hotel.checkin",
     "pk": 3,
     "fields": {
         "estancia": 1,
-        "empleado": 5,
-        "fecha_hora_check_out": "2024-01-29T18:58:44.960Z"
+        "empleado": 3,
+        "fecha_hora_check_in": "2024-03-10T20:01:48.497Z"
     }
 },
 {
     "model": "hotel.checkout",
-    "pk": 4,
+    "pk": 1,
     "fields": {
         "estancia": 2,
         "empleado": 1,
-        "fecha_hora_check_out": "2024-01-29T18:58:44.960Z"
+        "fecha_hora_check_out": "2024-03-10T20:01:48.497Z"
     }
 },
 {
     "model": "hotel.checkout",
-    "pk": 5,
+    "pk": 2,
     "fields": {
-        "estancia": 5,
+        "estancia": 1,
+        "empleado": 1,
+        "fecha_hora_check_out": "2024-03-10T20:01:48.497Z"
+    }
+},
+{
+    "model": "hotel.checkout",
+    "pk": 3,
+    "fields": {
+        "estancia": 3,
         "empleado": 3,
-        "fecha_hora_check_out": "2024-01-29T18:58:44.960Z"
+        "fecha_hora_check_out": "2024-03-10T20:01:48.497Z"
     }
 },
-{
-    "model": "hotel.comentario",
-    "pk": 1,
-    "fields": {
-        "cliente": 4,
-        "habitacion": 4,
-        "puntuacion": -22675,
-        "comentario": "Ciencia pesada prueba llenar la mañana creer. Olvida ok o hombro siete. Detalle líder de página doctor económico.",
-        "fecha": "2024-01-29T18:58:44.959Z"
+
+    {
+        "model": "hotel.comentario",
+        "pk": 2,
+        "fields": {
+            "cliente": 2,
+            "habitacion": 2,
+            "puntuacion": 25372,
+            "comentario": "Picture tell popular free fly however tough. Small fast system six hour fear trial eight. Generation manager whose whole risk citizen.\nBox none industry and.",
+            "fecha": "2024-03-10T20:01:48.497Z"
+        }
+    },
+    {
+        "model": "hotel.comentario",
+        "pk": 3,
+        "fields": {
+            "cliente": 1,
+            "habitacion": 1,
+            "puntuacion": 20234,
+            "comentario": "Trouble lawyer pick company technology hope. Future result understand city. Any by will item light outside house. Always director they together agent computer situation.",
+            "fecha": "2024-03-10T20:01:48.497Z"
+        }
     }
-},
-{
-    "model": "hotel.comentario",
-    "pk": 2,
-    "fields": {
-        "cliente": 3,
-        "habitacion": 3,
-        "puntuacion": -32751,
-        "comentario": "El discurso de repente mejora la administración más tarde. Cinco costos estatales.\nLa práctica aún tiene poder entonces. Los padres deben alejarse del factor de la ciudad. El autor de los padres ricos puede.",
-        "fecha": "2024-01-29T18:58:44.959Z"
-    }
-},
-{
-    "model": "hotel.comentario",
-    "pk": 3,
-    "fields": {
-        "cliente": 3,
-        "habitacion": 2,
-        "puntuacion": 9570,
-        "comentario": "Debería estación de línea. Ambiente firme capaz dueño.\nCorre describirse a sí mismo esposa del grado. Idea sí vencer recientemente cultura verdad respuesta final.",
-        "fecha": "2024-01-29T18:58:44.959Z"
-    }
-},
-{
-    "model": "hotel.comentario",
-    "pk": 4,
-    "fields": {
-        "cliente": 3,
-        "habitacion": 4,
-        "puntuacion": 11662,
-        "comentario": "Primera nota de aceite de repente necesaria. Olvidar término reconocer sujeto. Cultivar máquina.\nRepentinamente, estos traen la llamada importante del país del ejecutivo de la temporada.",
-        "fecha": "2024-01-29T18:58:44.959Z"
-    }
-},
-{
-    "model": "hotel.comentario",
-    "pk": 5,
-    "fields": {
-        "cliente": 5,
-        "habitacion": 5,
-        "puntuacion": -22105,
-        "comentario": "Realizar una prueba moderna casi aplicar ambos.\nPerro ejecutivo tiempo. Impuesto cercano bastante lejos pobre. Declaración pública de la manera de línea de su palabra.",
-        "fecha": "2024-01-29T18:58:44.959Z"
-    }
-},
-{
-    "model": "hotel.comodidad",
-    "pk": 1,
-    "fields": {
-        "nombre": "Preocupación de la noche pasada quizás oficial de sangre. Aceptar PM una vez abajo esos amigos fin pie.\nAdmite desear escritor. Sugiere pensar en negro. Proporcione usted mismo tipo.",
-        "descripcion": "Estilo de tratamiento puede arte quizás disfrutar de la página. Como ocurrir mi país.\nCrecimiento negro segundo desafío de gasto de la ciudad. Comience la cobertura financiera de la institución única."
-    }
-},
-{
-    "model": "hotel.comodidad",
-    "pk": 2,
-    "fields": {
-        "nombre": "Oficial seguro feliz creer. Permitir convertirse en la preocupación del aire caer conocimiento especialmente agua.\nAgregar amenaza teoría de cultura. Pieza sirve para enseñar eso atrás propósito siete. Modelo agradable extranjero.",
-        "descripcion": "Indicar el programa de nivel de coche ciencia. Centrarse en el proceso de cosas. Solo deporte de agencia.\nNivel de autoridad esperar vidrio de cosas. Mil crecimiento. Escucha aún entiende particularmente piel."
-    }
-}
+
 ,
 {
     "model": "hotel.comodidad",
+    "pk": 1,
+    "fields": {
+        "nombre": "Beneficio de Viaje Antiguo",
+        "descripcion": "Mantén la presión baja. El viento cultural del crimen de la mesa puede avanzar. Análisis desde un segundo soldado pequeño en contra. Cualquiera pequeño esfuerzo del sur del aire del patio."
+    }
+},
+{
+    "model": "hotel.comodidad",
+    "pk": 2,
+    "fields": {
+        "nombre": "Nombre Social del Animal del Oeste",
+        "descripcion": "Modelo de éxito militar público. Pequeño sí periódico. Aquellos tienen más alcance que otros. Ordena que aparezca el Congreso. Sólo sí corta libro de canciones humanas."
+    }
+},
+{
+    "model": "hotel.comodidad",
     "pk": 3,
     "fields": {
-        "nombre": "Iniciar método recordar permitir nosotros familia. Tal idioma más enfoque de miembro historia cámara allí. A menudo, el estilo de problema de relación lo haría.",
-        "descripcion": "Correr demasiado cámara edad pensamiento resto de actuación. Negociar revelar sitio de periódico cabeza efecto. Elegir medios cualquier cosa en feliz local."
-    }
-},
-{
-    "model": "hotel.comodidad",
-    "pk": 4,
-    "fields": {
-        "nombre": "Las personas a lo largo de nosotros primavera. Menos sistema de discurso del partido capital ejecutar. Soldado internacional interesante volar sistema federal.\nFormar pero la mayoría ayuda pareja nacional árbol. Autor ambos físicos.",
-        "descripcion": "Declaración de desarrollo de tecnología recibir viento de la sociedad. Salud de los medios de comunicación fuera de la celda sin.\nDiseño de la silla de comercio de la red mar. Realizar alguien encuentra. Resultado libre consumidor economía de hecho caminar."
-    }
-},
-{
-    "model": "hotel.comodidad",
-    "pk": 5,
-    "fields": {
-        "nombre": "Plan de patio sur ancho. Mundo mucho fuego según.\nImpacto extranjero existir yo mismo dar. Por lo general, la tasa de profesor verde. Desafío sí mismo hija escena similar. Tira que la factura del desarrollo de la línea.",
-        "descripcion": "Bastante interesante claramente hace seguir al cliente. Trabajador de repente tipo largo. Pronto millón de juego de respuesta de la nación. Autor del primer libro."
+        "nombre": "Fuego Personal Moderno",
+        "descripcion": "Beneficio declaración historia aumentar temor punto apenas cinco. Futura etapa de habilidad dejar. Mal recibir todo rápidamente. Hora trato pensamiento abrir científico."
     }
 },
 {
@@ -1950,13 +1758,21 @@
     "model": "hotel.habitacioncomodidad",
     "pk": 2,
     "fields": {
-        "habitacion": 4,
-        "comodidad": 1
+        "habitacion": 2,
+        "comodidad": 2
     }
 },
 {
     "model": "hotel.habitacioncomodidad",
     "pk": 3,
+    "fields": {
+        "habitacion": 2,
+        "comodidad": 3
+    }
+},
+{
+    "model": "hotel.habitacioncomodidad",
+    "pk": 4,
     "fields": {
         "habitacion": 1,
         "comodidad": 2
@@ -1964,18 +1780,10 @@
 },
 {
     "model": "hotel.habitacioncomodidad",
-    "pk": 4,
-    "fields": {
-        "habitacion": 3,
-        "comodidad": 3
-    }
-},
-{
-    "model": "hotel.habitacioncomodidad",
     "pk": 5,
     "fields": {
-        "habitacion": 1,
-        "comodidad": 3
+        "habitacion": 2,
+        "comodidad": 1
     }
 },
 {
@@ -1983,108 +1791,39 @@
     "pk": 6,
     "fields": {
         "habitacion": 1,
-        "comodidad": 4
+        "comodidad": 3
     }
 },
-{
-    "model": "hotel.habitacioncomodidad",
-    "pk": 7,
-    "fields": {
-        "habitacion": 5,
-        "comodidad": 5
-    }
-},
-{
-    "model": "hotel.habitacioncomodidad",
-    "pk": 8,
-    "fields": {
-        "habitacion": 2,
-        "comodidad": 2
-    }
-},
-{
-    "model": "hotel.habitacioncomodidad",
-    "pk": 9,
-    "fields": {
-        "habitacion": 3,
-        "comodidad": 5
-    }
-},
-{
-    "model": "hotel.habitacioncomodidad",
-    "pk": 10,
-    "fields": {
-        "habitacion": 3,
-        "comodidad": 1
-    }
-},
-{
-    "model": "hotel.habitacioncomodidad",
-    "pk": 11,
-    "fields": {
-        "habitacion": 1,
-        "comodidad": 1
-    }
-},
-{
-    "model": "hotel.habitacioncomodidad",
-    "pk": 12,
-    "fields": {
-        "habitacion": 1,
-        "comodidad": 1
-    }
-}
-,
 {
     "model": "hotel.evento",
     "pk": 1,
     "fields": {
-        "nombre": "Lote general tres llenar imagen necesaria almacenar explicar. Agente educación estación ejecutar control preocupación. Comience a admitir entender lugar actual curso fácil.\nVarios sienten escena de pared de conferencia de células.",
-        "hora_inicio": "2024-01-29T18:58:44.960Z",
-        "hora_final": "2024-01-29T18:58:44.960Z",
-        "ubicacion": "Hablar solo él mismo. Colección democrática comportamiento pieza política diseño.\nTipo de imagen ok mejor noche extranjera. Continuar casi conocimiento variado como empleado."
+      "nombre": "Keep big strong. In partner quality production among sign poor.\nTen third certainly scene top become. Week agency especially page team view speak. Generation tax heart full issue their.",
+      "hora_inicio": "2024-03-10T20:01:48.497Z",
+      "hora_final": "2024-03-10T20:01:48.497Z",
+      "ubicacion": "Accept character step current. Key provide strategy yes standard set.\nEight thought ever across. Truth trouble itself during alone. Religious cultural many later woman its some."
     }
-},
-{
+  },
+  {
     "model": "hotel.evento",
     "pk": 2,
     "fields": {
-        "nombre": "Sin tierra azul preocupación. Forma de consumidor situación de corte discutir reclamo. Dentro de siempre alguien ciertamente arriesgar llenar el segundo sufrimiento. Mientras tanto, sigue.\nElige hombro otro tipo mujer seguridad del sitio.",
-        "hora_inicio": "2024-01-29T18:58:44.960Z",
-        "hora_final": "2024-01-29T18:58:44.960Z",
-        "ubicacion": "Joven pez asunto necesario. Doctor aceptar menos cada carrera tasa. Sobre sueño por encima de la razón de sueño.\nAgua que ocurre. Prueba de la corte de vidrio capaz de conseguir la televisión."
+      "nombre": "Art image star maybe level training. Whose three modern specific as would five. Standard both difficult spring another long. Adult mouth hundred population friend open.",
+      "hora_inicio": "2024-03-10T20:01:48.497Z",
+      "hora_final": "2024-03-10T20:01:48.497Z",
+      "ubicacion": "Generation garden officer movie author ground. Purpose contain carry thousand. Difficult prepare government others eye approach sort. One full position write."
     }
-},
-{
+  },
+  {
     "model": "hotel.evento",
     "pk": 3,
     "fields": {
-        "nombre": "Darse cuenta casi continuar entrevista de. Producción última puerta.\nExperto animal tarea específica mensaje papel. Parece que el país humano gira ocho veces. Hasta preocupación en lugar de causa.",
-        "hora_inicio": "2024-01-29T18:58:44.960Z",
-        "hora_final": "2024-01-29T18:58:44.960Z",
-        "ubicacion": "Muévete, ella describe que corta el teléfono. Grabar todo cada ser el dinero del oficial superior. Viento dentro del tratamiento de la película."
+      "nombre": "A however suddenly together. Reality expect son project federal special. Up enjoy send degree finally.\nSave collection also blue our. Risk seek yes task walk program. Mind chance mission expert.",
+      "hora_inicio": "2024-03-10T20:01:48.497Z",
+      "hora_final": "2024-03-10T20:01:48.497Z",
+      "ubicacion": "Since popular sing material style beyond another. Create keep end deal analysis interview subject. Garden reason key past central."
     }
-},
-{
-    "model": "hotel.evento",
-    "pk": 4,
-    "fields": {
-        "nombre": "Serie aire boca a través de tarjeta. Del sur suceden por encima de detener exactamente él mismo.",
-        "hora_inicio": "2024-01-29T18:58:44.960Z",
-        "hora_final": "2024-01-29T18:58:44.960Z",
-        "ubicacion": "En la parte delantera de la formación de entrenamiento, clasifique. Número otro empuje estadounidense.\nConstruyendo ok gracias a TV padre peso arte porque. Verano grande cada uno."
-    }
-},
-{
-    "model": "hotel.evento",
-    "pk": 5,
-    "fields": {
-        "nombre": "Amenaza acuerdo fiesta segura bolsa. Mañana sobre la boca muchas posiciones de superficie.\nParticipante de verano derecho hacia abajo. Alguien hecho para probar la historia del árbol volar da.",
-        "hora_inicio": "2024-01-29T18:58:44.960Z",
-        "hora_final": "2024-01-29T18:58:44.960Z",
-        "ubicacion": "Siglo podría modelo de bola si después. Información sangre diferente operación del padre. La gente golpea permite casi establecer. Él mismo nota entre información."
-    }
-},
+  },
 {
     "model": "hotel.reservaevento",
     "pk": 1,
@@ -2105,15 +1844,15 @@
     "model": "hotel.reservaevento",
     "pk": 3,
     "fields": {
-        "reserva": 4,
-        "evento": 2
+        "reserva": 1,
+        "evento": 3
     }
 },
 {
     "model": "hotel.reservaevento",
     "pk": 4,
     "fields": {
-        "reserva": 5,
+        "reserva": 3,
         "evento": 3
     }
 },
@@ -2122,120 +1861,65 @@
     "pk": 5,
     "fields": {
         "reserva": 1,
-        "evento": 4
+        "evento": 2
     }
 },
 {
     "model": "hotel.reservaevento",
     "pk": 6,
     "fields": {
-        "reserva": 5,
-        "evento": 5
+        "reserva": 1,
+        "evento": 2
     }
 },
 {
     "model": "hotel.reservaevento",
     "pk": 7,
     "fields": {
-        "reserva": 3,
+        "reserva": 2,
         "evento": 3
     }
 },
 {
-    "model": "hotel.reservaevento",
-    "pk": 8,
-    "fields": {
-        "reserva": 5,
-        "evento": 1
-    }
-},
-{
-    "model": "hotel.reservaevento",
-    "pk": 9,
-    "fields": {
-        "reserva": 1,
-        "evento": 4
-    }
-},
-{
-    "model": "hotel.reservaevento",
-    "pk": 10,
-    "fields": {
-        "reserva": 3,
-        "evento": 5
-    }
-},
-{
-    "model": "hotel.reservaevento",
-    "pk": 11,
-    "fields": {
-        "reserva": 4,
-        "evento": 2
-    }
-}
-,
-{
     "model": "hotel.puntuacion",
     "pk": 1,
     "fields": {
-        "cliente": 5,
-        "evento": 5,
-        "puntuacion": -29781,
-        "comentario": "En el árbol de maravilla del padre. Mal juego de peso sin embargo causa tres incluyendo. Personaje cuyo trabajador envía práctica de expertos para aumentar la figura.",
-        "fecha": "2024-01-29T18:58:44.960Z"
+      "cliente": 1,
+      "evento": 2,
+      "puntuacion": 5,
+      "comentario": "Excelente evento, muy interesante y bien organizado. ¡Lo disfruté mucho!",
+      "fecha": "2024-03-10T20:01:48.497Z"
     }
-},
-{
+  },
+  {
     "model": "hotel.puntuacion",
     "pk": 2,
     "fields": {
-        "cliente": 1,
-        "evento": 3,
-        "puntuacion": 25241,
-        "comentario": "Para involucrar a la hija gracias a la propiedad de un caso. Etapa de crecimiento de la semana.\nTener un cambio de nombre del hermano no eso. Política de entrenamiento difícil. Argumentar proceso nuevo mil bastante a través de.",
-        "fecha": "2024-01-29T18:58:44.960Z"
+      "cliente": 3,
+      "evento": 1,
+      "puntuacion": 4,
+      "comentario": "Buen evento, pero podría mejorar en algunos aspectos. En general, una experiencia positiva.",
+      "fecha": "2024-03-10T20:01:48.497Z"
     }
-},
-{
+  },
+  {
     "model": "hotel.puntuacion",
     "pk": 3,
     "fields": {
-        "cliente": 1,
-        "evento": 1,
-        "puntuacion": 8520,
-        "comentario": "Alrededor de sentarse te administración forma ir. Deporte pesado todo muchos otros.\nMil instituciones tempranas familiares de agencia. Persona seria joven década. Por lo general, oeste muy borde adivinar la práctica del factor de reflexión.",
-        "fecha": "2024-01-29T18:58:44.960Z"
+      "cliente": 2,
+      "evento": 3,
+      "puntuacion": 5,
+      "comentario": "Increíble evento, me encantó. Muy bien planificado y ejecutado. ¡Definitivamente volvería!",
+      "fecha": "2024-03-10T20:01:48.497Z"
     }
-},
-{
-    "model": "hotel.puntuacion",
-    "pk": 4,
-    "fields": {
-        "cliente": 1,
-        "evento": 4,
-        "puntuacion": 10786,
-        "comentario": "Puede escuchar la madre deportiva actual por encima. Idea teléfono también evidencia.\nQue figura afecte primero a la mitad de la madre votará. Desde si el análisis es rápido.",
-        "fecha": "2024-01-29T18:58:44.960Z"
-    }
-},
-{
-    "model": "hotel.puntuacion",
-    "pk": 5,
-    "fields": {
-        "cliente": 4,
-        "evento": 2,
-        "puntuacion": 32745,
-        "comentario": "Pregunta a alguien el desarrollo. La primera opción corre en vivo. Mejor una operación baja mala.\nBolsa bajo la tarea de la mente. Que representan la calidad del bebé de la taza.",
-        "fecha": "2024-01-29T18:58:44.960Z"
-    }
-},
+  },
 {
     "model": "hotel.cuentabancaria",
     "pk": 1,
     "fields": {
-        "cliente": 4,
+        "cliente": 3,
         "tipo": "Ca",
-        "numero_cuenta": -7870
+        "numero_cuenta": -1785
     }
 },
 {
@@ -2244,91 +1928,74 @@
     "fields": {
         "cliente": 2,
         "tipo": "Ca",
-        "numero_cuenta": -2287
+        "numero_cuenta": 29032
     }
 },
 {
     "model": "hotel.cuentabancaria",
     "pk": 3,
     "fields": {
-        "cliente": 3,
-        "tipo": "Ca",
-        "numero_cuenta": -17740
-    }
-},
-{
-    "model": "hotel.cuentabancaria",
-    "pk": 4,
-    "fields": {
-        "cliente": 5,
-        "tipo": "Ca",
-        "numero_cuenta": 5500
-    }
-},
-{
-    "model": "hotel.cuentabancaria",
-    "pk": 5,
-    "fields": {
         "cliente": 1,
         "tipo": "Ca",
-        "numero_cuenta": -18487
+        "numero_cuenta": -31406
     }
-}
-,
+},
 {
     "model": "hotel.promocion",
     "pk": 1,
     "fields": {
-        "nombre": "Oferta especial: Descuento en estancia",
-        "descripcion": "Descubre esta increíble oferta para tu próxima estancia. Disfruta de un descuento especial y vive momentos inolvidables. ¡Reserva ahora!",
-        "usuario": 4,
-        "descuento": 11207,
-        "fecha_fin": "1973-07-16"
+      "nombre": "¡Descuento de verano!",
+      "descripcion": "¡Aprovecha nuestro descuento especial de verano y disfruta de unas vacaciones inolvidables en nuestro hotel!",
+      "usuario": 3,
+      "descuento": 10,
+      "fecha_fin": "2024-08-31"
     }
-},
-{
+  },
+  {
     "model": "hotel.promocion",
     "pk": 2,
     "fields": {
-        "nombre": "Promoción de Verano",
-        "descripcion": "Aprovecha la temporada de verano con nuestra promoción exclusiva. Descuentos increíbles y experiencias inigualables te esperan. ¡No te lo pierdas!",
-        "usuario": 2,
-        "descuento": -1873,
-        "fecha_fin": "2008-06-30"
+      "nombre": "¡Oferta de otoño!",
+      "descripcion": "Reserva ahora y obtén un descuento exclusivo en tu estadía durante la temporada de otoño.",
+      "usuario": 2,
+      "descuento": 15,
+      "fecha_fin": "2024-11-30"
     }
-},
-{
+  },
+  {
     "model": "hotel.promocion",
     "pk": 3,
     "fields": {
-        "nombre": "Escape romántico",
-        "descripcion": "Crea recuerdos románticos con nuestra oferta especial. Disfruta de momentos únicos con esa persona especial. ¡Reserva ahora y vive el amor!",
-        "usuario": 2,
-        "descuento": -25173,
-        "fecha_fin": "2009-02-20"
+      "nombre": "¡Promoción de invierno!",
+      "descripcion": "Aprovecha nuestras tarifas especiales de invierno y disfruta de todas nuestras comodidades a precios reducidos.",
+      "usuario": 3,
+      "descuento": 20,
+      "fecha_fin": "2025-02-28"
+    }
+  }
+,
+{
+    "model": "hotel.uploadedfile",
+    "pk": 1,
+    "fields": {
+        "file": "run.png",
+        "uploaded_on": "1993-05-15T11:20:18.466Z"
     }
 },
 {
-    "model": "hotel.promocion",
-    "pk": 4,
+    "model": "hotel.uploadedfile",
+    "pk": 2,
     "fields": {
-        "nombre": "Paquete cultural",
-        "descripcion": "Sumérgete en la cultura con nuestro paquete especial. Descubre la belleza de la ciudad y disfruta de descuentos exclusivos. ¡Reserva ahora tu experiencia cultural!",
-        "usuario": 4,
-        "descuento": -24378,
-        "fecha_fin": "1996-02-14"
+        "file": "ok.bmp",
+        "uploaded_on": "2017-09-24T11:35:49.369Z"
     }
 },
 {
-    "model": "hotel.promocion",
-    "pk": 5,
+    "model": "hotel.uploadedfile",
+    "pk": 3,
     "fields": {
-        "nombre": "Escapada de Otoño",
-        "descripcion": "Disfruta del otoño con nuestra oferta especial. Paisajes encantadores, descuentos exclusivos y experiencias inolvidables te esperan. ¡Reserva ya!",
-        "usuario": 5,
-        "descuento": 14532,
-        "fecha_fin": "2005-09-25"
+        "file": "leader.gif",
+        "uploaded_on": "1988-11-23T14:48:40.727Z"
     }
 }
-
 ]
